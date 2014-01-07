@@ -58,7 +58,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'html2haml'
-  gem 'hub', :require=>nil
   gem 'quiet_assets'
 
   # Better rails console
@@ -83,3 +82,7 @@ gem 'figaro'
 # Redis goodness to handle fast changing data
 gem 'redis'
 gem 'redis-objects'
+
+# Image upload
+gem 'carrierwave'
+gem 'mini_magick'
