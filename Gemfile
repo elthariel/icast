@@ -47,6 +47,11 @@ gem 'debugger', group: [:development, :test]
 ################
 # Classic gems #
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 # Authentication
 gem 'devise'
 
@@ -64,3 +69,4 @@ gem 'figaro'
 
 # Redis goodness to handle fast changing data
 gem 'redis'
+gem 'redis-objects'
