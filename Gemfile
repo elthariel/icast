@@ -51,7 +51,7 @@ gem 'debugger', group: [:development, :test]
 gem 'devise'
 
 # Admin interface
-gem 'activeadmin'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 # Model Serialization
 gem 'active_model_serializers'
@@ -59,4 +59,8 @@ gem 'active_model_serializers'
 # Handle tagging of Model
 gem 'acts-as-taggable-on'
 
+# Handle configuration management
+gem 'figaro'
 
+# Redis goodness to handle fast changing data
+gem 'redis'
