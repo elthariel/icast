@@ -57,12 +57,17 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
-  gem 'html2haml'
   gem 'quiet_assets'
 
   # Better rails console
   gem 'pry'
+
+  # Transform html/erb templates to slim templates
+  gem 'html2slim'
 end
+
+# Templating language, to avoid touching dirty html with their ugly <>
+gem 'slim-rails'
 
 # Authentication
 gem 'devise'
