@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @stream.name
+p
+  strong Description:
+  = @stream.description
+
+= link_to 'Edit', edit_stream_path(@stream)
+'|
+= link_to 'Back', streams_path
