@@ -3,4 +3,12 @@ rvm:
   - 1.9.3
   - 2.0.0
   - jruby-19mode # JRuby in 1.9 mode
-
+services:
+  - postgresql
+  - redis
+before_script:
+  - psql -c 'create database radioxide_test;' -U postgres
+  - echo 'test:' > /home/travis/build/elthariel/radioxide/config/database.yml
+  - echo '  adapter: postgresql' >> /home/travis/build/elthariel/radioxide/config/database.yml
+  - echo '  database: radioxide_test' >> /home/travis/build/elthariel/radioxide/config/database.yml
+  - echo '  username: postgres' >> /home/travis/build/elthariel/radioxide/config/database.yml

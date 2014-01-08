@@ -52,6 +52,7 @@ group :development, :test do
   gem 'faker', github: 'stympy/faker'
   gem 'rspec-rails'
   gem 'simplecov', :require => false
+  gem 'coveralls', require: false
 end
 
 group :development do
