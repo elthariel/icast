@@ -6,5 +6,4 @@ services:
   - redis
 before_script:
   - psql -c 'create database radioxide_test;' -U postgres
-  - 'echo "test:\n  adapter: postgresql\n  database: radioxide_test\n  username: postgres" > /home/travis/build/elthariel/radioxide/config/database.yml'
-  - cat -e /home/travis/build/elthariel/radioxide/config/database.yml
+  - cp /home/travis/build/elthariel/radioxide/config/database.yml.travis /home/travis/build/elthariel/radioxide/config/database.yml
