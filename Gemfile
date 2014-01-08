@@ -98,3 +98,6 @@ gem 'mini_magick'
 
 # Slug generation
 gem 'friendly_id', '~> 5.0.0'
+
+# The cool XML (can xml be cool? i doubt it) parser
+gem 'nokogiri', require: false
