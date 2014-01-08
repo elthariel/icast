@@ -20,6 +20,10 @@ module Radioxide
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.generators do |g|
+      g.scaffold_controller = :scaffold_controller
+    end
+
     config.autoload_paths += ["#{config.root}/app/classes"]
   end
 end

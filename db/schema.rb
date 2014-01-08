@@ -29,8 +29,18 @@ ActiveRecord::Schema.define(version: 20140108121425) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "stream_uris", force: true do |t|
-    t.integer  "stream_id"
+  create_table "stations", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stations", ["slug"], name: "index_stations_on_slug", unique: true, using: :btree
+
+  create_table "streams", force: true do |t|
+    t.integer  "station_id"
     t.string   "uri"
     t.boolean  "video",      default: false
     t.string   "mime"
@@ -44,18 +54,8 @@ ActiveRecord::Schema.define(version: 20140108121425) do
     t.datetime "updated_at"
   end
 
-  add_index "stream_uris", ["mime"], name: "index_stream_uris_on_mime", using: :btree
-  add_index "stream_uris", ["stream_id"], name: "index_stream_uris_on_stream_id", using: :btree
-
-  create_table "streams", force: true do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "streams", ["slug"], name: "index_streams_on_slug", unique: true, using: :btree
+  add_index "streams", ["mime"], name: "index_streams_on_mime", using: :btree
+  add_index "streams", ["station_id"], name: "index_streams_on_station_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
