@@ -6,7 +6,7 @@ class Stream < ActiveRecord::Base
 
   has_many :stream_uris
 
-  validates :name, presence: true, length: { minimum: 5 }
+  validates :name, presence: true, length: { minimum: 2 }
 
   METAS.each { |meta| delegate meta, to: :metadata, prefix: :current }
 
