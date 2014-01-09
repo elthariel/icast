@@ -1,0 +1,11 @@
+[playlist]
+NumberOfEntries=<%=@station.streams.count%>
+
+<% index = 1 %>
+<% @station.streams.each do |stream| %>
+File<%=index%>=<%=stream.uri%>
+Title<%=index%>=<%=@station.name%> -- <%=@station.slogan%>
+Length<%=index%>=-1
+
+<% index += 1 %>
+<% end %>

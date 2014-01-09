@@ -107,3 +107,7 @@ gem 'nokogiri', require: false
 
 # List of countries and country specific data
 gem 'countries'
+
+# API Documentation generation
+gem 'apipie-rails'
+gem 'maruku' # doc markdown parsing

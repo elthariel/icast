@@ -3,6 +3,8 @@ Radioxide::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
+  apipie
+
   namespace :api do
     scope '1' do
       resources :stations

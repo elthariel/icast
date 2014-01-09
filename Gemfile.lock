@@ -54,6 +54,8 @@ GEM
       tzinfo (~> 0.3.37)
     acts-as-taggable-on (3.0.0)
       rails (>= 3, < 5)
+    apipie-rails (0.0.21)
+      rails (>= 3.0.10)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.1)
@@ -148,6 +150,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    maruku (0.7.0)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_magick (3.7.0)
@@ -279,6 +282,7 @@ DEPENDENCIES
   active_model_serializers
   activeadmin!
   acts-as-taggable-on
+  apipie-rails
   better_errors
   binding_of_caller
   carrierwave
@@ -294,6 +298,7 @@ DEPENDENCIES
   html2slim
   jbuilder (~> 1.2)
   jquery-rails
+  maruku
   mini_magick
   nokogiri
   pg
