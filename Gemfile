@@ -65,6 +65,8 @@ group :development do
 
   # Transform html/erb templates to slim templates
   gem 'html2slim'
+
+  gem 'thin'
 end
 
 # Templating language, to avoid touching dirty html with their ugly <>
@@ -75,6 +77,7 @@ gem 'devise'
 
 # Admin interface
 gem 'activeadmin', github: 'gregbell/active_admin'
+# FIXME Implement me later gem 'country-select'
 
 # Model Serialization
 gem 'active_model_serializers'
