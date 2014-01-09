@@ -93,8 +93,8 @@ gem 'redis-objects'
 gem 'carrierwave'
 gem 'mini_magick'
 
-# UNUSED Active Record enumerations
-# gem 'simple_enum'
+# Active Record enumerations
+gem 'simple_enum'
 
 # Slug generation
 gem 'friendly_id', '~> 5.0.0'
