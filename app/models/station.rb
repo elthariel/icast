@@ -2,11 +2,15 @@ class Station < ActiveRecord::Base
   extend FriendlyId
 
   METAS = [ :artist, :title, :genre ]
-  TAGS  = [ :location, :genre, :lang ]
+  TAGS  = [ :genre, :tags ]
 
   has_many :streams
+  has_one  :details, class_name: 'StationDetails'
 
-  validates :name, presence: true, length: { minimum: 2 }
+  validates :slug,     length: { minimum: 2 }, presence: true
+  validates :name,     length: { minimum: 2 }, presence: true
+  validates :country,  length: { maximum: 2 }
+  validates :language, length: { maximum: 2 }
 
   METAS.each { |meta| delegate meta, to: :metadata, prefix: :current }
 

@@ -1,20 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-EXAMPLE_LOCATION = [
-  "paris, france",
-  "Londong, united kingdoms",
-  "Pekin, China",
-  "paris, france, chatelet",
-  "Africa"
-]
 
-EXAMPLE_LANG = [
-  "English",
-  "French",
-  "German",
-  "Other",
-  "Spanish"
-]
+EXAMPLE_LANG      = [ "en", 'fr', 'sp', 'de', 'it', 'af' ]
+EXAMPLE_COUNTRY   = [ 'us', 'gb', 'fr', 'de', 'sp', 'it' ]
 
 EXAMPLE_GENRE = [
   "News",
@@ -31,9 +19,8 @@ EXAMPLE_GENRE = [
 FactoryGirl.define do
   factory :station do
     name            { Faker::Company.name + " Radio" }
-    description     { Faker::Lorem.paragraph 5 }
-    location_list   { EXAMPLE_LOCATION.sample }
-    lang_list       { EXAMPLE_LANG.sample }
+    language        { EXAMPLE_LANG.sample }
+    country         { EXAMPLE_COUNTRY.sample }
     genre_list      { (0..3).to_a.map {EXAMPLE_GENRE.sample}.uniq.join "," }
 
 
@@ -44,5 +31,7 @@ FactoryGirl.define do
     after(:create) do |station, evaluator|
       create_list(:stream, evaluator.streams_count, station: station)
     end
+
+    details factory: :station_details
   end
 end

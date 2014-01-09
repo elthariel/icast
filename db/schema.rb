@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108121425) do
+ActiveRecord::Schema.define(version: 20140109083517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,35 @@ ActiveRecord::Schema.define(version: 20140108121425) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "stations", force: true do |t|
-    t.string   "name"
-    t.string   "slug"
+  create_table "station_details", force: true do |t|
+    t.integer  "station_id"
+    t.string   "state"
+    t.string   "city"
+    t.string   "website"
+    t.string   "email"
+    t.string   "twitter"
+    t.string   "phone"
+    t.string   "logo"
     t.text     "description"
+    t.text     "lineup"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "stations", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slogan"
+    t.decimal  "longitude",  precision: 15, scale: 10
+    t.decimal  "latitude",   precision: 15, scale: 10
+    t.string   "country"
+    t.string   "language"
+  end
+
+  add_index "stations", ["country"], name: "index_stations_on_country", using: :btree
+  add_index "stations", ["language"], name: "index_stations_on_language", using: :btree
   add_index "stations", ["slug"], name: "index_stations_on_slug", unique: true, using: :btree
 
   create_table "streams", force: true do |t|

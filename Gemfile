@@ -101,3 +101,6 @@ gem 'friendly_id', '~> 5.0.0'
 
 # The cool XML (can xml be cool? i doubt it) parser
 gem 'nokogiri', require: false
+
+# List of countries and country specific data
+gem 'countries'
