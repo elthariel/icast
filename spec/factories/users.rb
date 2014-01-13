@@ -14,5 +14,6 @@ FactoryGirl.define do
 
     factory :user_root,   traits: [:root, :confirmed]
     factory :user_modo,   traits: [:moderator, :confirmed]
+    factory :confirmed_user, traits: [:confirmed]
   end
 end

@@ -11,6 +11,12 @@ Radioxide::Application.routes.draw do
       resources :stations, except: [:new, :edit]
       resources :contributions, except: [:new, :edit]
 
+      namespace :user do
+        resources :registrations, except: [:new, :edit]
+        resources :sessions, only: [:create, :show, :destroy]
+        resources :confirmations, only: [:create, :show, :destroy]
+      end
+
       # Icecast YP compatibility
       # this is kinda ugly since icecast use the reserver 'action' parameter :-/
       post '/icecast' => 'icecast#add', as: :icecast_add,
