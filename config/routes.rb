@@ -12,7 +12,7 @@ Radioxide::Application.routes.draw do
       resources :contributions, except: [:new, :edit]
 
       namespace :user do
-        resources :registrations, except: [:new, :edit]
+        resources :registrations, only: [:create, :destroy]
         resources :sessions, only: [:create, :show, :destroy]
         resources :confirmations, only: [:create, :show, :destroy]
       end
