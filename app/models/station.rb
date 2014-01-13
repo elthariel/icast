@@ -1,6 +1,9 @@
 class Station < ActiveRecord::Base
   extend FriendlyId
 
+  include Authority::Abilities
+  self.authorizer_name = 'StationAuthorizer'
+
   METAS = [ :artist, :title, :genre ]
   TAGS  = [ :genre, :tags ]
 

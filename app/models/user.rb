@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
 
   as_enum :role, default: 0, moderator: 1, root: 2
 
-  has_many :stations
+  # Adds `can_create?(resource)`, etc
+  include Authority::UserAbilities
 end
