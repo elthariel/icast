@@ -11,12 +11,12 @@ class Station < ActiveRecord::Base
   belongs_to :user
 
   # Station's Streams
-  has_many :streams
+  has_many :streams, dependent: :destroy
   accepts_nested_attributes_for :streams, allow_destroy: true
 
   # Station Details
-  has_one  :details, class_name: 'StationDetails'
-  after_create :create_details!
+  has_one  :details, class_name: 'StationDetails', dependent: :destroy
+  after_create :create_details!, unless: :details
   accepts_nested_attributes_for :details
 
   # Validations

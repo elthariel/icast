@@ -1,3 +1,5 @@
+require 'icecast_constraints'
+
 Radioxide::Application.routes.draw do
 
   ActiveAdmin.routes(self)
@@ -8,6 +10,15 @@ Radioxide::Application.routes.draw do
   namespace :api do
     scope '1' do
       resources :stations
+
+      # Icecast YP compatibility
+      # this is kinda ugly since icecast use the reserver 'action' parameter :-/
+      post '/icecast' => 'icecast#add', as: :icecast_add,
+        constraints: IcecastConstraints::Add
+      post '/icecast' => 'icecast#touch', as: :icecast_touch,
+        constraints: IcecastConstraints::Touch
+      post '/icecast' => 'icecast#remove', as: :icecast_remove,
+        constraints: IcecastConstraints::Remove
     end
   end
 
