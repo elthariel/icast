@@ -30,6 +30,10 @@ class Station < ActiveRecord::Base
   acts_as_taggable_on TAGS
   friendly_id :name, use: :slugged
 
+  # Pagination
+  paginates_per 20
+  max_paginates_per 100
+
   #####################
   # Redis stored metas
   #

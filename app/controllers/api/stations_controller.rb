@@ -10,10 +10,15 @@ class Api::StationsController < Api::BaseController
   before_filter :load_station, only: [:show]
 
   api :GET, '/stations'
+  param :page, Fixnum, desc: "The number of the page to return"
+  param :page_size, Fixnum, desc: "The size of the page to return, by default page_size is 20. Must be between 1 and 100"
   def index
-    render json: Station.all.includes(:streams)
-  end
+    @stations = Station.all.includes(:streams)
+      .page(params[:page])
+      .per(params[:page_size] || 20)
 
+    render json: @stations, serializer: KaminariSerializer
+  end
 
 
   api :GET, '/stations/:id(.format)' , 'Get Station\'s detailed informations or playlist'
