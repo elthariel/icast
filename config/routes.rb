@@ -14,7 +14,8 @@ Radioxide::Application.routes.draw do
       namespace :user do
         resources :registrations, only: [:create, :destroy]
         resources :sessions, only: [:create, :show, :destroy]
-        resources :confirmations, only: [:create, :show, :destroy]
+        resources :confirmations, only: [:create]
+        resources :passwords, only: [:create]
       end
 
       # Icecast YP compatibility

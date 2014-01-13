@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Api::User::UserSessions" do
+describe "Api::User::Sessions" do
   let (:user) { FactoryGirl.create :confirmed_user}
 
   describe "POST /user/sessions" do
@@ -30,10 +30,6 @@ describe "Api::User::UserSessions" do
 
       expect(response.status).to be(200)
       expect(JSON.parse(response.body)['user']['email']).to eq(user.email)
-    end
-
-    it 'allows to login with the created user' do
-      post api_user_sessions_path, user_session: {email: user.email, password: user.password}
     end
 
     it 'returns a 401 if the user is not logged in' do
