@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
 
   # Adds `can_create?(resource)`, etc
   include Authority::UserAbilities
+
+  has_many :contributions
 end

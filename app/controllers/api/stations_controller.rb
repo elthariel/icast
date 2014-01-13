@@ -8,7 +8,8 @@ class Api::StationsController < Api::BaseController
     EOS
   end
 
-  before_filter :load_station, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :load_station, only: [:show, :update, :destroy]
 
   api :GET, '/stations', 'List the stations'
   param :page, Fixnum, desc: "The number of the page to return"

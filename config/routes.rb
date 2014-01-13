@@ -1,7 +1,6 @@
 require 'icecast_constraints'
 
 Radioxide::Application.routes.draw do
-
   ActiveAdmin.routes(self)
   devise_for :users
 
@@ -9,7 +8,8 @@ Radioxide::Application.routes.draw do
 
   namespace :api do
     scope '1' do
-      resources :stations
+      resources :stations, except: [:new, :edit]
+      resources :contributions, except: [:new, :edit]
 
       # Icecast YP compatibility
       # this is kinda ugly since icecast use the reserver 'action' parameter :-/
