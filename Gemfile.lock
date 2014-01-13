@@ -60,6 +60,9 @@ GEM
       activesupport (>= 3.0.0)
     arel (4.0.1)
     atomic (1.1.14)
+    authority (2.9.0)
+      activesupport (>= 3.0.0)
+      rake (>= 0.8.7)
     bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -283,6 +286,7 @@ DEPENDENCIES
   activeadmin!
   acts-as-taggable-on
   apipie-rails
+  authority
   better_errors
   binding_of_caller
   carrierwave

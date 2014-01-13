@@ -75,6 +75,9 @@ gem 'slim-rails'
 # Authentication
 gem 'devise'
 
+# ACL definition
+gem 'authority'
+
 # Admin interface
 gem 'activeadmin', github: 'gregbell/active_admin'
 # FIXME Implement me later gem 'country-select'

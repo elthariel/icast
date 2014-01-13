@@ -4,6 +4,9 @@ class Station < ActiveRecord::Base
   METAS = [ :artist, :title, :genre ]
   TAGS  = [ :genre, :tags ]
 
+  # Station's owner
+  belongs_to :user
+
   # Station's Streams
   has_many :streams
   accepts_nested_attributes_for :streams, allow_destroy: true

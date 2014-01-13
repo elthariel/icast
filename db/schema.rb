@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109091415) do
+ActiveRecord::Schema.define(version: 20140113082426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,11 +69,13 @@ ActiveRecord::Schema.define(version: 20140109091415) do
     t.decimal  "latitude",   precision: 15, scale: 10
     t.string   "country"
     t.string   "language"
+    t.integer  "user_id"
   end
 
   add_index "stations", ["country"], name: "index_stations_on_country", using: :btree
   add_index "stations", ["language"], name: "index_stations_on_language", using: :btree
   add_index "stations", ["slug"], name: "index_stations_on_slug", unique: true, using: :btree
+  add_index "stations", ["user_id"], name: "index_stations_on_user_id", using: :btree
 
   create_table "streams", force: true do |t|
     t.integer  "station_id"
