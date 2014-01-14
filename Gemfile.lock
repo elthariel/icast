@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/elthariel/capistrano-thin.git
+  revision: 6ec2567b1f890af1d3869efd0ba48599010f55ce
+  specs:
+    capistrano-thin (0.0.1)
+      capistrano
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 8c2ff62c30beda6ae4f2c389c113c3a65bd5e785
   specs:
@@ -73,6 +80,14 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    capistrano (2.15.5)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -129,6 +144,7 @@ GEM
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    highline (1.6.20)
     hike (1.2.3)
     hpricot (0.8.6)
     html2slim (0.0.4)
@@ -161,6 +177,13 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.7.0)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
@@ -216,6 +239,8 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    rvm-capistrano (1.5.1)
+      capistrano (~> 2.15.4)
     sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -289,6 +314,9 @@ DEPENDENCIES
   authority
   better_errors
   binding_of_caller
+  capistrano
+  capistrano-ext
+  capistrano-thin!
   carrierwave
   coffee-rails (~> 4.0.0)
   countries
@@ -312,6 +340,7 @@ DEPENDENCIES
   redis
   redis-objects
   rspec-rails
+  rvm-capistrano
   sass-rails (~> 4.0.0)
   sdoc
   simple_enum

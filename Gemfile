@@ -38,9 +38,6 @@ end
 # Use unicorn as the app server
 gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
@@ -67,6 +64,14 @@ group :development do
   gem 'html2slim'
 
   gem 'thin'
+
+  # Use Capistrano for deployment
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'rvm-capistrano' # Setup rvm and use it
+  gem 'capistrano-thin', github: 'elthariel/capistrano-thin', :require => false
+
+
 end
 
 # Templating language, to avoid touching dirty html with their ugly <>
