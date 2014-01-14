@@ -21,7 +21,7 @@ ActiveAdmin.register Station do
       f.input :latitude
     end
 
-    f.inputs "Details", for: [:details, f.object.details] do |details|
+    f.inputs "Details", for: [:details, f.object.details || f.object.build_details] do |details|
       details.input :state
       details.input :city
       details.input :website
