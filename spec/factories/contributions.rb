@@ -3,14 +3,15 @@
 FactoryGirl.define do
   factory :contribution do
     user                { User.all.sample }
-    contributable       { Station.all.sample }
+    contributable_type  'Station'
+    contributable_id    { Station.all.sample.id }
 
     data                { { name: "Contributed Name" } }
   end
 
   factory :contribution_new_content, class: "Contribution" do
     user                { User.all.sample }
-    contributable_type  { 'Station' }
+    contributable_type  'Station'
 
     data                do
       attributes = FactoryGirl.attributes_for(:station)

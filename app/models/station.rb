@@ -19,6 +19,8 @@ class Station < ActiveRecord::Base
   after_create :create_details!, unless: :details
   accepts_nested_attributes_for :details
 
+  has_many :contributions, as: :contributable
+
   # Validations
   validates :slug,     length: { minimum: 2 }, presence: true
   validates :name,     length: { minimum: 2 }, presence: true

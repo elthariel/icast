@@ -5,11 +5,83 @@ class Api::StationsController < Api::BaseController
 
     description <<-EOS
 
+### Introduction
+
+This resource is the main part of this API. It represents an (Internet
+Radio/Video) Station with it's associated informations and streaming
+services.
+
+Using our API, you can register you own station or suggest content and
+details for existing stations, improving your service :)
+
+### Example data
+
+    {
+      "station": {
+        "id": 4499,
+        "slug": "ebert-llc-radio",
+        "name": "Ebert LLC Radio",
+        "slogan": "Ze Bestest Unicorn Radio",
+        "country": "fr",
+        "language": "fr",
+        "current": {
+         },
+        "streams": [
+          {
+            "uri": "http://dubuque.net/stream797.webm",
+            "video": "false",
+            "mime": "audio/vorbis",
+            "bitrate": 64,
+            "samplerate": null,
+            "channels": 2
+          }
+        ],
+        "details": {
+          "id": 10,
+          "station_id": 4499,
+          "state": null,
+          "city": "Paris",
+          "website": "http://www.choucroute.name",
+          "email": "zoie@jakubowski.biz",
+          "twitter": @twitter_account,
+          "phone": null,
+          "logo": {
+            "url": null
+          },
+          "description": "This is a long description of the radio",
+          "lineup": "0h00 - 2h30 : Super Program 1\\n2h30 - 13h: Morning Super Program'\\n13h00-24h00: Random music from Space\\n",
+          "created_at": "2014-01-14T10:30:04.582Z",
+          "updated_at": "2014-01-14T10:30:04.582Z"
+        }
+      }
+    }
+
+### Access Control
+
+There's currently 3 ways of using this API resource: Read-only, Authenticated,
+and as a Radio Owner.
+
+#### Read-only
+
+If you don't have an account on our service, you can use this API read-only.
+With this access level, you'll only be able to GET /stations and GET
+/stations/:id
+
+#### Authenticated
+
+As an authenticated user, you'll be able to suggest new stations, details and to
+register your own station.
+
+#### Station Owner
+
+As a station owner, you can update every details of your own radio station as
+well as deleting it (don't leave us please, we like you !)
+
     EOS
   end
 
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
-  before_action :load_station, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy, :suggest]
+  before_action :load_station, only: [:show, :update, :destroy, :suggest]
 
   api :GET, '/stations', 'List the stations'
   param :page, Fixnum, desc: "The number of the page to return"
@@ -88,6 +160,7 @@ class Api::StationsController < Api::BaseController
     authorize_action_for Station
 
     @station = Station.new(station_params)
+    @station.user = current_user
 
     if @station.save
       render status: :ok, json: {id: @station.id, slug: @station.slug}
@@ -97,8 +170,12 @@ class Api::StationsController < Api::BaseController
   end
 
   api :PATCH, '/stations/:id(.format)', 'Update an existing station'
-  param :id, [Fixnum, String], description: 'A unique identifier for the station, either numerical or the slug'
-  param :station, String, description: 'A JSON representation of the modified station, see POST /stations for format description'
+  param :id, [Fixnum, String], desc: 'A unique identifier for the station, either numerical or the slug'
+  param :station, String, desc: <<-EOS
+    A JSON representation of the modified station, see POST /stations for format
+    description. You can omit fields that have not changed
+  EOS
+
   def update
     authorize_action_for @station
 
@@ -109,8 +186,30 @@ class Api::StationsController < Api::BaseController
     end
   end
 
+  api :PATCH, '/stations/:id/suggest(.format)', "Suggest modifications of a station"
+  param :id, [Fixnum, String], required: true,
+    desc: 'A unique identifier for the station, either numerical or the slug'
+  param :station, Hash, required: true,
+    desc: 'A JSON representation of the modified station, see POST /stations for details'
+  description <<-EOS
+  ### Return Value
+
+  This API call returns an empty response with a 201 status on success, 422 otherwise
+
+  EOS
+  def suggest
+    @contrib = @station.contributions.build(user: current_user, data: station_params)
+
+    if @contrib.save
+      render status: :created, nothing: true
+    else
+      render status: :unprocessable_entity, nothing: true
+    end
+  end
+
   api :DELETE, '/stations/:id(.format)', 'Removes the station from the directory'
-  param :id, [Fixnum, String], description: 'A unique identifier for the station, either numerical or the slug'
+  param :id, [Fixnum, String], required: true,
+    desc: 'A unique identifier for the station, either numerical or the slug'
   def destroy
     authorize_action_for @station
 

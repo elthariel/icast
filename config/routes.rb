@@ -8,8 +8,13 @@ Radioxide::Application.routes.draw do
 
   namespace :api do
     scope '1' do
-      resources :stations, except: [:new, :edit]
-      resources :contributions, except: [:new, :edit]
+      resources :stations, except: [:new, :edit] do
+        member do
+          patch :suggest
+        end
+      end
+
+      resources :contributions, except: [:new, :edit, :show]
 
       namespace :user do
         resources :registrations, only: [:create, :destroy]

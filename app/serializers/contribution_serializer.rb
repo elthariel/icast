@@ -1,4 +1,3 @@
 class ContributionSerializer < ActiveModel::Serializer
-  attributes :id, :contribution_type, :contribution_id, :data
-  has_one :user
+  attributes :id, :contributable_type, :contributable_id, :data, :applied_at
 end
