@@ -22,9 +22,6 @@ set :rvm_ruby_string, 'ruby-2.0.0-p353'
 before 'deploy:setup', 'rvm:install_rvm'   # install RVM
 before 'deploy:setup', 'rvm:install_ruby'   # install RVM
 
-# Database migration
-after 'deploy:update_code', 'deploy:migrate'
-
 namespace :db do
   desc "Make symlink for database yaml"
   task :symlink do
@@ -32,7 +29,10 @@ namespace :db do
   end
 end
 after  "deploy:update_code",        "db:symlink"
+after  'deploy:update_code',        'deploy:migrate'
+
 before "deploy:assets:precompile",  "db:symlink"
+
 
 require 'rvm/capistrano'
 require 'bundler/capistrano'

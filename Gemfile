@@ -63,8 +63,6 @@ group :development do
   # Transform html/erb templates to slim templates
   gem 'html2slim'
 
-  gem 'thin'
-
   # Use Capistrano for deployment
   gem 'capistrano'
   gem 'capistrano-ext'
@@ -73,6 +71,9 @@ group :development do
 
 
 end
+
+# Use thin as webserver
+gem 'thin'
 
 # Templating language, to avoid touching dirty html with their ugly <>
 gem 'slim-rails'
