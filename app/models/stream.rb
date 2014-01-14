@@ -1,7 +1,7 @@
 class Stream < ActiveRecord::Base
-  belongs_to :station
+  belongs_to :station, inverse_of: :streams
 
-  validates :station_id, presence: true
-  validates :uri, uri: true
-  validates :mime, presence: true
+  validates :station, presence: true
+  validates :uri,     uri: true
+  validates :mime,    presence: true
 end

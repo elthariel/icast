@@ -9,9 +9,15 @@ class Contribution < ActiveRecord::Base
   validates :contributable_type,  presence: true # FIXME Validates contributable_type
   validate  :contribution_valid?
 
+  scope :not_applied, -> { where(applied_at: nil)}
+  scope :applied,     -> { where('applied_at IS NOT NULL')}
 
   def new_content?
     contributable_id.nil?
+  end
+
+  def applied?
+    not applied_at.nil?
   end
 
   def apply!
@@ -21,15 +27,15 @@ class Contribution < ActiveRecord::Base
     record
   end
 
-  def apply(dupme=false)
+  def apply(for_validation=false)
     if new_content?
-      record = contributable_type.constantize.new(data)
+      record = contributable_type.constantize.new(data.to_h)
     else
-      record = dupme ? contributable.dup : contributable
+      record = for_validation ? contributable.dup : contributable
       record.attributes = data
     end
 
-    self.applied_at = DateTime.now
+    self.applied_at = DateTime.now unless for_validation
 
     record
   end

@@ -11,11 +11,11 @@ class Station < ActiveRecord::Base
   belongs_to :user
 
   # Station's Streams
-  has_many :streams, dependent: :destroy
+  has_many :streams, dependent: :destroy, inverse_of: :station
   accepts_nested_attributes_for :streams, allow_destroy: true
 
   # Station Details
-  has_one  :details, class_name: 'StationDetails', dependent: :destroy
+  has_one  :details, class_name: 'StationDetails', dependent: :destroy#, inverse_of: :station
   after_create :create_details!, unless: :details
   accepts_nested_attributes_for :details
 

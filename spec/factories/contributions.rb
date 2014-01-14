@@ -12,6 +12,11 @@ FactoryGirl.define do
     user                { User.all.sample }
     contributable_type  { 'Station' }
 
-    data                { FactoryGirl.attributes_for(:station) }
+    data                do
+      attributes = FactoryGirl.attributes_for(:station)
+      attributes['details_attributes'] = FactoryGirl.attributes_for(:station_details, station: nil)
+      attributes['streams_attributes'] = [ FactoryGirl.attributes_for(:stream, station: nil) ]
+      attributes
+    end
   end
 end
