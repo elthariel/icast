@@ -166,6 +166,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
+    libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -224,6 +225,7 @@ GEM
     redis (3.0.6)
     redis-objects (0.7.0)
       redis (>= 3.0.2)
+    ref (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
@@ -278,6 +280,9 @@ GEM
     temple (0.6.7)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
+    therubyracer (0.12.0)
+      libv8 (~> 3.16.14.0)
+      ref
     thin (1.6.1)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -346,6 +351,7 @@ DEPENDENCIES
   simple_enum
   simplecov
   slim-rails
+  therubyracer
   thin
   turbolinks
   uglifier (>= 1.3.0)
