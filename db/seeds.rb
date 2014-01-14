@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+user = User.create!(email: 'demo@lta.io', password: 'qweasd42',
+  password_confirmation: 'qweasd42', role_cd: 2)
+user.confirm!
+
 lta = User.create!(email: 'contact@lta.io', password: 'qweasd42',
   password_confirmation: 'qweasd42', role_cd: 2)
 lta.confirm!
