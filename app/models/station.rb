@@ -40,6 +40,8 @@ class Station < ActiveRecord::Base
   include Geocodable
   delegate :city, :state, :city_changed?, :state_changed?, to: :details
 
+  include StationSearch
+
   #####################
   # Redis stored metas
   #

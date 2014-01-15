@@ -134,6 +134,10 @@ class Api::StationsSearchController < Api::BaseController
     render nothing: true
   end
 
+  def search
+    render nothing: true
+  end
+
   protected
   def render_stations
     render json: @stations, serializer: KaminariSerializer, root: :stations
