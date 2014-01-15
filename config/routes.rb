@@ -16,12 +16,18 @@ Radioxide::Application.routes.draw do
           get :local,                   to: 'stations_search#local'
           get 'country/:country_code',  to: 'stations_search#country'
           get 'language/:language',     to: 'stations_search#language'
-          get 'genre/:genre',           to: 'stations_search#genre'
-          get 'search',                 to: 'stations_search#search'
+          get 'genre/:genres',          to: 'stations_search#genre'
+          get 'search/',                to: 'stations_search#search'
         end
       end
 
       resources :contributions, except: [:new, :edit, :show]
+
+      resources :genres, only: :index do
+        collection do
+          get :popular
+        end
+      end
 
       namespace :user do
         resources :registrations, only: [:create, :destroy]
@@ -71,7 +77,6 @@ Radioxide::Application.routes.draw do
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
-  #     resource :seller
   #   end
 
   # Example resource route with more complex sub-resources:

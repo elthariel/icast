@@ -33,7 +33,7 @@ class Api::User::SessionsController < Api::BaseController
     EOS
   end
 
-  api :POST, 'user/sessions(.format)', 'Create a session | Login on Radioxide API'
+  api :POST, '/user/sessions(.format)', 'Create a session | Login on Radioxide API'
   param :user_session, Hash, desc: 'A JSON hash containing two keys: email and password'
   description <<-EOS
   ### Example
@@ -56,7 +56,7 @@ class Api::User::SessionsController < Api::BaseController
     end
   end
 
-  api :DELETE, 'user/sessions/current(.format)', 'Delete the current session | Log off radioxide api'
+  api :DELETE, '/user/sessions/current(.format)', 'Delete the current session | Log off radioxide api'
   def destroy
     if user_signed_in?
       sign_out(current_user)
@@ -64,7 +64,7 @@ class Api::User::SessionsController < Api::BaseController
     render status: :ok, nothing: true
   end
 
-  api :GET, 'user/sessions/current(.format)', 'Returns the current logged-in user.'
+  api :GET, '/user/sessions/current(.format)', 'Returns the current logged-in user.'
   description "This is a convenience method to know if you're connected or not"
   def show
     if user_signed_in?

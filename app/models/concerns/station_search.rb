@@ -48,8 +48,20 @@ module StationSearch
   end
 
   module ClassMethods
-    def search
-      # FIXME Implement me :)
+    # This method expect an array of genre
+    def by_genre(genre_list)
+    end
+    def search(q, opts = {})
+      tire_options = {
+        page: opts[:page] || 1,
+        size: opts[:page_size] || 20
+      }
+
+      self.tire.search(tire_options) do
+        query do
+          string q
+        end
+      end
     end
   end
 end

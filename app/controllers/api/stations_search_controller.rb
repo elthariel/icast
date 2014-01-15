@@ -115,14 +115,14 @@ class Api::StationsSearchController < Api::BaseController
 
 
 
-  api :GET, 'stations/genre/:genre(.json)', 'UNIMPLEMENTED Return a list of stations for the requested genre'
+  api :GET, 'stations/genre/:genre(.format)', 'Return a list of stations for the requested genre'
   param :genre, String, "The request genre name (eg. 'rock')", required: true
   description <<-DESC
   Returns a list of Station for the specified genre
 
   ### Examples
 
-      curl http://radioxide.lta.io/api/1/stations/genre/rock.json
+      curl http://radioxide.lta.io/api/1/stations/genre/rock,disco.json
       curl http://radioxide.lta.io/api/1/stations/language/news.json?page=42&page_size=23
 
   ### Returned data
@@ -131,11 +131,37 @@ class Api::StationsSearchController < Api::BaseController
 
   DESC
   def genre
-    render nothing: true
+    render status: :not_found if params[:genres].empty?
+
+    @stations = Station.search(params[:genres],
+      page: params[:page], page_size: params[:page]
+    )
+
+    render_stations
   end
 
+  api :GET, 'stations/search(.format)', 'Return a list of stations for the requested query string'
+  param :q, String, "Some text to search for in our staion index", required: true
+  description <<-DESC
+  Returns a list of Station for the specified text. A full-text search is performed
+
+  ### Examples
+
+      curl http://radioxide.lta.io/api/1/stations/search.json?q=fr,disco,paris,news
+
+  ### Returned data
+
+  The format of the result is the same than GET /stations(.format) call.
+
+  DESC
   def search
-    render nothing: true
+    render status: :not_found if params[:q].empty?
+
+    @stations = Station.search(params[:q],
+      page: params[:page], page_size: params[:page]
+    )
+
+    render_stations
   end
 
   protected
