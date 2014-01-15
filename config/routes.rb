@@ -16,6 +16,7 @@ Radioxide::Application.routes.draw do
           get :local,                   to: 'stations_search#local'
           get 'country/:country_code',  to: 'stations_search#country'
           get 'language/:language',     to: 'stations_search#language'
+          get 'genre/:genre',           to: 'stations_search#genre'
         end
       end
 
