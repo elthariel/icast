@@ -3,11 +3,15 @@ module Geocodable
 
   included do
     geocoded_by :geocodable_address
-    before_save :geocode, if: -> (o) { o.geocodable_address_changed? }
+    before_save :geocode, if: -> (o) { o.geocodable_address_changed? and o.geocodable_address.present? }
   end
 
   def geocodable_address
-    [city, state, country].compact.join(', ')
+    if city
+      [city, state, country].compact.join(', ')
+    else
+      ""
+    end
   end
 
   def geocodable_address_changed?
