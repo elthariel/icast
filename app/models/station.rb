@@ -36,6 +36,10 @@ class Station < ActiveRecord::Base
   paginates_per 20
   max_paginates_per 100
 
+  # GeoCoding
+  include Geocodable
+  delegate :city, :state, :city_changed?, :state_changed?, to: :details
+
   #####################
   # Redis stored metas
   #

@@ -31,6 +31,7 @@ There calls needs authentication.
 
 
   api :POST, '/contributions(.format)', 'Contribute new content (thank you!)'
+  param :contribution, Hash, required: true
   def create
     @contribution = Contribution.new(contribution_params)
     @contribution.user = current_user

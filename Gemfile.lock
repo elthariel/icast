@@ -141,6 +141,8 @@ GEM
       actionpack (>= 3.0)
     friendly_id (5.0.2)
       activerecord (~> 4.0.0)
+    geocoder (1.1.8)
+    geoip (1.1.2)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -332,6 +334,8 @@ DEPENDENCIES
   faker!
   figaro
   friendly_id (~> 5.0.0)
+  geocoder
+  geoip
   html2slim
   jbuilder (~> 1.2)
   jquery-rails

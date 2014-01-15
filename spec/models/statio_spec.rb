@@ -52,4 +52,25 @@ describe Station do
       expect(subject.save).to be_true
     end
   end
+
+  describe "GeoCoding" do
+    subject { FactoryGirl.create :station, country: 'fr' }
+
+    describe "#geocode" do
+      it "is called if city field changes" do
+        expect(subject).to receive(:geocode)
+        subject.details.city = 'Paris'
+        subject.save
+      end
+
+      it 'sets latitude and longitude on parent Station' do
+        expect(subject.longitude).not_to be_present
+        expect(subject.latitude).not_to be_present
+        subject.details.city = 'Paris'
+        subject.save
+        expect(subject.longitude).to be_present
+        expect(subject.latitude).to be_present
+      end
+    end
+  end
 end

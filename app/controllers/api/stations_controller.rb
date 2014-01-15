@@ -80,6 +80,7 @@ well as deleting it (don't leave us please, we like you !)
     EOS
   end
 
+  respond_to :json
   before_action :authenticate_user!, only: [:create, :update, :destroy, :suggest]
   before_action :load_station, only: [:show, :update, :destroy, :suggest]
 

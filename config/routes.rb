@@ -12,6 +12,11 @@ Radioxide::Application.routes.draw do
         member do
           patch :suggest
         end
+        collection do
+          get :local,                   to: 'stations_search#local'
+          get 'country/:country_code',  to: 'stations_search#country'
+          get 'language/:language',     to: 'stations_search#language'
+        end
       end
 
       resources :contributions, except: [:new, :edit, :show]

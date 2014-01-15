@@ -120,3 +120,7 @@ gem 'countries'
 # API Documentation generation
 gem 'apipie-rails'
 gem 'maruku' # doc markdown parsing
+
+# Geolocation gems
+gem 'geoip'
+gem 'geocoder'
