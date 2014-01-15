@@ -124,3 +124,6 @@ gem 'maruku' # doc markdown parsing
 # Geolocation gems
 gem 'geoip'
 gem 'geocoder'
+
+# Full text search and shit
+gem 'tire'

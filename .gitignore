@@ -20,3 +20,4 @@ config/database.yml
 /config/application.yml
 /coverage
 config/GeoLiteCity.dat
+/dist
