@@ -34,6 +34,12 @@ describe Contribution do
       new_content.apply
       expect(new_content.applied_at).to be_a_kind_of(Time)
     end
+
+    it 'handle base64 serialized image for contribution to Station' do
+      station = new_content.apply
+      expect(File.exists? station.logo.path).to be_true
+      expect(station.logo.path).to match(/redis\.png/)
+    end
   end
 
   describe "#apply!" do

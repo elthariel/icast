@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113133248) do
+ActiveRecord::Schema.define(version: 20140120081349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20140113133248) do
     t.string   "email"
     t.string   "twitter"
     t.string   "phone"
-    t.string   "logo"
     t.text     "description"
     t.text     "lineup"
     t.datetime "created_at"
@@ -82,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140113133248) do
     t.string   "country"
     t.string   "language"
     t.integer  "user_id"
+    t.string   "logo"
   end
 
   add_index "stations", ["country"], name: "index_stations_on_country", using: :btree

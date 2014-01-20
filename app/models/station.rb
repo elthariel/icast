@@ -27,6 +27,9 @@ class Station < ActiveRecord::Base
   validates :country,  length: { maximum: 2 }
   validates :language, length: { maximum: 2 }
 
+  # Station Logo
+  mount_uploader :logo, StationLogoUploader
+
   # MetaData/Tags
   METAS.each { |meta| delegate meta, to: :metadata, prefix: :current }
   acts_as_taggable_on TAGS
@@ -58,6 +61,14 @@ class Station < ActiveRecord::Base
   def metadata=(new_hash)
     hash = StationMetadata.new(metadata_redis_key)
     hash.update(new_hash)
+  end
+
+  ######################
+  # Base64 FileUpload.
+  # Used by contributions
+  def base64_logo=(data)
+    io = Base64FileUpload.new(data)
+    self.logo = io
   end
 
   private

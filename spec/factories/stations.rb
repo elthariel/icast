@@ -23,6 +23,7 @@ FactoryGirl.define do
     country         { EXAMPLE_COUNTRY.sample }
     genre_list      { (0..3).to_a.map {EXAMPLE_GENRE.sample}.uniq.join "," }
 
+    logo            { File.open Rails.root.join('spec', 'fixtures', 'logo.png') }
 
     ignore do
       streams_count { rand(5) + 1 }
