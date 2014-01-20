@@ -2,9 +2,11 @@ language: ruby
 rvm:
   - 2.0.0
 addons:
-  postgresql: 9.3
+  postgresql: "9.3"
 services:
+  - postgresql
   - redis
+  - elasticsearch
 before_script:
   - psql -c 'create database radioxide_test;' -U postgres
   - cp /home/travis/build/elthariel/radioxide/config/database.yml.travis /home/travis/build/elthariel/radioxide/config/database.yml
