@@ -68,8 +68,6 @@ group :development do
   gem 'capistrano-ext'
   gem 'rvm-capistrano' # Setup rvm and use it
   gem 'capistrano-thin', github: 'elthariel/capistrano-thin', :require => false
-
-
 end
 
 # Use thin as webserver

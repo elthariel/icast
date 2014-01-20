@@ -42,6 +42,5 @@ describe 'Station' do
       end.to change { Station.count }.by(1)
       expect(File.exists? Station.last.logo.path).to be_true
     end
-
   end
 end

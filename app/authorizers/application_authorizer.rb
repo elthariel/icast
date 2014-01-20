@@ -10,6 +10,11 @@ class ApplicationAuthorizer < Authority::Authorizer
   def self.default(adjective, user)
     # 'Whitelist' strategy for security: anything not explicitly allowed is
     # considered forbidden.
+    puts "Default for #{adjective}"
     user.root?
+  end
+
+  def self.readable_by?(user)
+    user.root? or user.moderator?
   end
 end

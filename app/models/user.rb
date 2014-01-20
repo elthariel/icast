@@ -9,5 +9,14 @@ class User < ActiveRecord::Base
   # Adds `can_create?(resource)`, etc
   include Authority::UserAbilities
 
+  # Adds 'creatable_by?(user)', etc. # i.e. who can edit/create users.
+  # This is only used in ActiveAdmin. Regular devise rules applies otherwise
+  include Authority::Abilities
+  self.authorizer_name = 'UserAuthorizer'
+
   has_many :contributions
+
+  def display_name
+    email
+  end
 end

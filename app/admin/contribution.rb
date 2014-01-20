@@ -7,6 +7,7 @@ ActiveAdmin.register Contribution do
 
   member_action :apply, :method => :post do
     contrib = Contribution.find(params[:id])
+    authorize! :apply, contrib
     contrib.apply!
     redirect_to admin_contributions_path, :notice => "Applied!"
   end
@@ -19,8 +20,8 @@ ActiveAdmin.register Contribution do
     column :created_at
     column :data
     actions do |contrib|
-      unless contrib.applied?
-        link_to 'Apply!', apply_admin_contribution_path(contrib), method: :post, confirm: 'Are you sure ?'
+      if not contrib.applied? and authorized?(:apply, contrib)
+        link_to 'Apply!', apply_admin_contribution_path(contrib), method: :post, data: {confirm: 'Are you sure ?'}
       end
     end
   end

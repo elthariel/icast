@@ -14,4 +14,13 @@ class ContributionAuthorizer < ApplicationAuthorizer
   def deletable_by?(user)
     readable_by?(user)
   end
+
+  def applicable_by?(user)
+    return true if user.root? or user.moderator?
+    if resource.new_content?
+      user.can_create?(resource.contributable_type.constantize)
+    else
+      user.can_update?(resource.contributable)
+    end
+  end
 end
