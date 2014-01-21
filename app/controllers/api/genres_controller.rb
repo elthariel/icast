@@ -37,6 +37,11 @@ class Api::GenresController < ApplicationController
   def index
     render json: {
       genres: {
+        test: [
+          'trance',
+          'news',
+          'choucroute'
+        ],
         news: [
           'local',
           'politics',

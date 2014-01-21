@@ -38,12 +38,19 @@ module StationSearch
     def search(q, opts = {})
       tire_options = {
         page: opts[:page] || 1,
-        size: opts[:page_size] || 20
+        size: opts[:page_size] || 20,
+        load: true
       }
 
       self.tire.search(tire_options) do
-        query do
-          string q
+        if q.present?
+          query do
+            string q
+          end
+        end
+
+        if opts[:genres].present?
+          filter :terms, genres: opts[:genres], execution: 'and'
         end
       end
     end

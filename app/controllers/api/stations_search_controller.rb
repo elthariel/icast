@@ -133,7 +133,8 @@ class Api::StationsSearchController < Api::BaseController
   def genre
     render status: :not_found if params[:genres].empty?
 
-    @stations = Station.search(params[:genres],
+    params[:genres] = params[:genres].downcase.split(',')
+    @stations = Station.search(params[:q], genres: params[:genres],
       page: params[:page], page_size: params[:page]
     )
 
