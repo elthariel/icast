@@ -1,5 +1,5 @@
 class StationAuthorizer < ApplicationAuthorizer
-  def self.readable_by(user)
+  def self.readable_by?(user)
     true
   end
 

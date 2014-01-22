@@ -11,7 +11,7 @@ describe "Contributions" do
   let (:new_contrib2) { FactoryGirl.attributes_for :contribution_new_content }
 
   describe "GET /contributions" do
-    it "works!" do
+    it "works!", :show_in_doc do
       contrib1 and contrib2 and contrib3
       get api_contributions_path
 
@@ -30,18 +30,18 @@ describe "Contributions" do
   end
 
   describe "POST /contributions" do
-    it 'creates a new contribution' do
+    it 'creates a new contribution', :show_in_doc do
       [new_contrib1, new_contrib2].each {|c| c.delete :user}
 
-      expect { post api_contributions_path, contribution: new_contrib1 }
-        .to change { Contribution.count }.by(1)
       expect { post api_contributions_path, contribution: new_contrib2 }
+        .to change { Contribution.count }.by(1)
+      expect { post api_contributions_path, contribution: new_contrib1 }
         .to change { Contribution.count }.by(1)
     end
   end
 
   describe "PATCH /contributions/:id(.format)" do
-    it 'updates existing Contribution of current_user' do
+    it 'updates existing Contribution of current_user', :show_in_doc do
       new_name = 'Another name'
       attributes = contrib1.attributes
       attributes['data']['name'] = new_name
@@ -53,7 +53,7 @@ describe "Contributions" do
   end
 
   describe "DELETE /contributions/:id(.format)" do
-    it "deletes the requested contribution" do
+    it "deletes the requested contribution", :show_in_doc do
       delete api_contribution_path(contrib1)
 
       expect(response.status).to be(200)

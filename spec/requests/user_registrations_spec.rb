@@ -4,7 +4,7 @@ describe 'Api::User:RegistrationController' do
   let(:valid_user)   { { email: 'test@test.fr', password: 'qweasd42', password_confirmation: 'qweasd42' } }
   let(:invalid_user) { { email: 'test@test.fr', password: 'qweasd42', password_confirmation: 'qweasd' } }
 
-  describe "POST /user/registrations.json" do
+  describe "POST /user/registrations.json", :show_in_doc do
     it 'creates a new User' do
       post api_user_registrations_path, user_registration: valid_user
 
@@ -12,7 +12,7 @@ describe 'Api::User:RegistrationController' do
       expect(User.where(email: valid_user[:email]).first).not_to be_nil
     end
 
-    it 'returns \'UnprocessableEntity\' when validation fails' do
+    it 'returns \'UnprocessableEntity\' when validation fails', :show_in_doc do
       post api_user_registrations_path, user_registration: invalid_user
 
       expect(response.status).to be(422)
@@ -34,7 +34,7 @@ describe 'Api::User:RegistrationController' do
     end
   end
 
-  describe "DELETE /user/registrations/current.json" do
+  describe "DELETE /user/registrations/current.json", :show_in_doc do
     it 'deletes the current user' do
       # Create the user
       post api_user_registrations_path, user_registration: valid_user
@@ -52,7 +52,7 @@ describe 'Api::User:RegistrationController' do
       expect(User.where(email: valid_user[:email]).first).to be_nil
     end
 
-    it "returns :not_found (404) if not logged_in" do
+    it "returns :not_found (404) if not logged_in", :show_in_doc do
       # Now deletes the user
       delete api_user_registration_path(:current)
 

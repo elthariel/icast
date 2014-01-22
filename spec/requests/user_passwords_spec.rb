@@ -23,7 +23,7 @@ describe 'Api::User::Passwords' do
   end
 
   describe "POST /user/passwords" do
-    it "changes the password" do
+    it "changes the password", :show_in_doc do
       post api_user_sessions_path, user_session: {email: user.email, password: user.password}
       post api_user_passwords_path, valid_params
 
@@ -34,7 +34,7 @@ describe 'Api::User::Passwords' do
       expect(response.status).to be(200)
     end
 
-    it 'refuses to set new password without the right old one' do
+    it 'refuses to set new password without the right old one', :show_in_doc do
       post api_user_sessions_path, user_session: {email: user.email, password: user.password}
       post api_user_passwords_path, invalid_params
 

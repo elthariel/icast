@@ -13,15 +13,22 @@ Radioxide::Application.routes.draw do
           patch :suggest
         end
         collection do
-          get :local,                   to: 'stations_search#local'
-          get 'country/:country_code',  to: 'stations_search#country'
-          get 'language/:language',     to: 'stations_search#language'
-          get 'genre/:genres',          to: 'stations_search#genre'
-          get 'search/',                to: 'stations_search#search'
+          get :local,                   to: 'stations_search#local',    as: :local
+          get 'country/:country_code',  to: 'stations_search#country',  as: :country
+          get 'language/:language',     to: 'stations_search#language', as: :language
+          get 'genre/:genres',          to: 'stations_search#genre',    as: :genre
+          get 'search/',                to: 'stations_search#search',   as: :search
         end
       end
 
-      resources :contributions, except: [:new, :edit, :show]
+      resources :contributions, except: [:new, :edit, :show] do
+        collection do
+          get :on_my_stations
+        end
+        member do
+          post :apply
+        end
+      end
 
       resources :genres, only: :index do
         collection do

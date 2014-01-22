@@ -88,8 +88,6 @@ well as deleting it (don't leave us please, we like you !)
   param :page, Fixnum, desc: "The number of the page to return"
   param :page_size, Fixnum, desc: "The size of the page to return, by default page_size is 20. Must be between 1 and 100"
   def index
-    authorize_action_for Station
-
     @stations = Station.all.includes(:streams)
       .page(params[:page])
       .per(params[:page_size] || 20)
@@ -114,8 +112,6 @@ well as deleting it (don't leave us please, we like you !)
 
   EOS
   def show
-    authorize_action_for @station
-
     respond_with do |format|
       format.json { render json: @station, serializer: DetailedStationSerializer }
       format.m3u
