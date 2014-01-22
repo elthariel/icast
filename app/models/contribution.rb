@@ -28,11 +28,13 @@ class Contribution < ActiveRecord::Base
   end
 
   def apply(for_validation=false)
+    record_data = data.to_h.merge(details_attributes: {origin: 'contrib'})
+
     if new_content?
-      record = contributable_type.constantize.new(data.to_h)
+      record = contributable_type.constantize.new(record_data)
     else
       record = for_validation ? contributable.dup : contributable
-      record.attributes = data
+      record.assign_attributes(record_data)
     end
 
     self.applied_at = DateTime.now unless for_validation

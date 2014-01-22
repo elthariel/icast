@@ -7,5 +7,6 @@ FactoryGirl.define do
     email         { Faker::Internet.email }
     description   { Faker::Lorem.paragraph rand(10) }
     lineup        { Faker::Lorem.paragraph rand(10) }
+    origin        "seeds"
   end
 end

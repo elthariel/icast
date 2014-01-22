@@ -157,6 +157,7 @@ well as deleting it (don't leave us please, we like you !)
     authorize_action_for Station
 
     @station = Station.new(station_params)
+    @station.details.origin = 'api'
     @station.user = current_user
 
     if @station.save

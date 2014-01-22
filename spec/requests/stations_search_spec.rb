@@ -11,14 +11,16 @@ describe 'StationSearch' do
     stations
   end
   before(:each) { Station.tire.index.delete }
-  after(:all)  { Station.tire.index.delete }
+  after(:all)   { Station.tire.index.delete }
 
-  describe 'GET /stations/local.json' do
-    it "works!", :show_in_doc do
-      expect(stations)
-      get local_api_stations_path
+  if defined? GEOIP # Do we have GEOIP installed (Travis for example)
+    describe 'GET /stations/local.json' do
+      it "works!", :show_in_doc do
+        expect(stations)
+        get local_api_stations_path
 
-      response.status.should be(200)
+        response.status.should be(200)
+      end
     end
   end
 

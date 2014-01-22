@@ -27,6 +27,11 @@ describe 'Station' do
       end.to change { Station.count }.by(1)
     end
 
+    it "sets Station.detail.origin to 'api'", :show_in_doc do
+      post api_stations_path, station: station_attr
+      expect(Station.last.details.origin).to eq('api')
+    end
+
     it "Handles Logo upload", :show_in_doc do
       station_attr[:logo] = fileupload
       expect do

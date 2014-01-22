@@ -29,6 +29,12 @@ describe Contribution do
   end
 
   describe "#apply" do
+    it "sets station.details.origin to 'contrib'" do
+      expect(station.details.origin).not_to eq('contrib')
+      expect(content_update.apply.save).to be_true
+      expect(station.details.reload.origin).to eq('contrib')
+    end
+
     it 'updates applied_at field' do
       expect(new_content.applied_at).to be_nil
       new_content.apply
