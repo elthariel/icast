@@ -92,7 +92,7 @@ describe Station do
     end
 
     it "does nothing if you call on self" do
-      expect { subject }
+      subject.id
       expect { subject.merge_other! subject }.to change { Station.count }.by 0
     end
   end
