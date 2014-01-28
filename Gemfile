@@ -125,3 +125,6 @@ gem 'geocoder'
 
 # Full text search and shit
 gem 'tire'
+
+# Happy Hashes
+gem 'hashie'

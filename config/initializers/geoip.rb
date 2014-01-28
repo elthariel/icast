@@ -1,4 +1,4 @@
-GEOIP_DB = Rails.root.join('config', 'GeoLiteCity.dat')
+GEOIP_DB = Rails.root.join('config', 'GeoIPCity.dat')
 
 if File.readable?(GEOIP_DB)
   GEOIP = GeoIP.new(GEOIP_DB)

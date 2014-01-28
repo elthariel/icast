@@ -147,6 +147,7 @@ GEM
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hashie (2.0.5)
     hashr (0.0.22)
     highline (1.6.20)
     hike (1.2.3)
@@ -346,6 +347,7 @@ DEPENDENCIES
   friendly_id (~> 5.0.0)
   geocoder
   geoip
+  hashie
   html2slim
   jbuilder (~> 1.2)
   jquery-rails

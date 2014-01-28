@@ -21,3 +21,5 @@ config/database.yml
 /coverage
 config/GeoLiteCity.dat
 /dist
+lib/tasks/sync_dirty.rake
+db/import/*

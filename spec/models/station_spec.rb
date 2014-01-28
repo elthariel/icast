@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Station do
+  let (:other_station) { FactoryGirl.create :station }
   subject { FactoryGirl.create :station }
 
   describe "#listeners" do
@@ -71,6 +72,28 @@ describe Station do
         expect(subject.longitude).to be_present
         expect(subject.latitude).to be_present
       end
+    end
+  end
+
+  describe "#merge_other!" do
+    it "merge other_station into self and destroy other_station" do
+      other_station_streams = other_station.streams.count
+      other_station.slogan  = 'my_slogan'
+
+
+      expect { subject.merge_other!(other_station) }
+        .to change { subject.reload.streams.reload.count }.by(other_station_streams)
+
+      expect(subject.slogan).to equal(other_station.slogan)
+      expect(subject.name).not_to equal(other_station.name)
+
+      expect { Station.find(other_station.id) }
+        .to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "does nothing if you call on self" do
+      expect { subject }
+      expect { subject.merge_other! subject }.to change { Station.count }.by 0
     end
   end
 end

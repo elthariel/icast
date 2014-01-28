@@ -1,34 +1,38 @@
-require 'nokogiri'
-require 'open-uri'
-
 namespace :sync do
   desc 'Synchronize with dir.xiph.org (Xiph\'s Radio Directory)'
   task xiph: :environment do
-    dir = Nokogiri::XML(open('http://dir.xiph.org/yp.xml'))
+    # Parse xiph directory YellowPage with NokoGiri
+    dir = Xiph::Directory.new 'http://dir.xiph.org/yp.xml'
     # FIXME Delete me
-    #dir = Nokogiri::XML(open('/home/lta/Downloads/yp.xml'))
+    # dir = Xiph::Directory.new '/home/lta/Downloads/yp.xml'
 
     puts "Starting Sync..."
 
-    dir.xpath('//directory/entry').each do |entry|
+    # Here we extract all the informations we've got from each station node.
+    dir.each do |entry|
       station_hash = {
-        name: entry.xpath('.//server_name').first.content,
+        name:       entry.normalized_name,
+        genre_list: [entry.genre],
         metadata: {
-          title: entry.xpath('.//current_song').first.content,
-          genre: entry.xpath('.//genre').first.content
+          title: entry.current_title,
+          genre: entry.genre
+        },
+        details_attributes: {
+          origin: 'xiph_importer'
         }
       }
       stream_hash = {
-        uri: entry.xpath('.//listen_url').first.content,
-        mime: entry.xpath('.//server_type').first.content,
-        bitrate: entry.xpath('.//bitrate').first.content,
-        channels: entry.xpath('.//channels').first.content,
-        samplerate: entry.xpath('.//samplerate').first.content,
-        video: entry.xpath('.//server_type').first.content =~ /video/
+        uri:        entry.stream_uri,
+        mime:       entry.stream_mime,
+        bitrate:    entry.stream_bitrate,
+        channels:   entry.stream_channels,
+        samplerate: entry.stream_samplerate,
+        video:      entry.stream_video
       }
 
-      next if station_hash[:name].length < 2
+      next if station_hash[:name].length < 2 or station_hash[:name].parameterize.length <= 2
 
+      ## Find or create Station Name
       begin
         station = Station.friendly.find(station_hash[:name].parameterize)
       rescue ActiveRecord::RecordNotFound
