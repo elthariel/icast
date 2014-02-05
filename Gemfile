@@ -21,36 +21,34 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Use slim as our templating language
-gem 'slim-rails'
+# Support HAML templates
+gem 'haml-rails'
+# Support SLIM templates
+gem 'haml-rails'
 
+# Twitter bootstrap goodness
+gem 'bootstrap-sass'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
-# Use debugger
-gem 'debugger', group: [:development, :test]
+# Angular JS goodness
+gem 'angularjs-rails'
 
 ################
 # Classic gems #
-
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker', github: 'stympy/faker'
   gem 'rspec-rails'
   gem 'simplecov', :require => false
   gem 'coveralls', require: false
+
+  # Better rails console
+  gem 'pry'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'quiet_assets'
-
-  # Better rails console
-  gem 'pry'
 
   # Transform html/erb templates to slim templates
   gem 'html2slim'
@@ -123,4 +121,5 @@ gem 'tire'
 # Happy Hashes
 gem 'hashie'
 
+# Handle CORS policy for the API
 gem 'rack-cors', :require => 'rack/cors'

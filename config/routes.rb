@@ -56,6 +56,7 @@ Radioxide::Application.routes.draw do
   end
 
   # Any other HTML route request is sent to Angular
+  get '/angular/:view', to: 'angular#show'
   get "(*redirect_path)", to: "angular#index", constraints: lambda { |request| request.format == "text/html" }
   root 'angular#index'
 end

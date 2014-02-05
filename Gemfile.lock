@@ -61,6 +61,7 @@ GEM
       tzinfo (~> 0.3.37)
     acts-as-taggable-on (3.0.0)
       rails (>= 3, < 5)
+    angularjs-rails (1.2.10)
     ansi (1.4.3)
     apipie-rails (0.0.21)
       rails (>= 3.0.10)
@@ -77,6 +78,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -101,7 +104,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    columnize (0.3.6)
     countries (0.9.3)
       currencies (~> 0.4.2)
     coveralls (0.7.0)
@@ -113,12 +115,6 @@ GEM
     currencies (0.4.2)
     daemons (1.1.9)
     debug_inspector (0.0.2)
-    debugger (1.6.5)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.1)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.1)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -144,6 +140,13 @@ GEM
       activerecord (~> 4.0.0)
     geocoder (1.1.8)
     geoip (1.1.2)
+    haml (4.0.4)
+      tilt
+    haml-rails (0.5.1)
+      actionpack (~> 4.0.0)
+      activesupport (~> 4.0.0)
+      haml (>= 3.1, < 5.0)
+      railties (~> 4.0.0)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -221,8 +224,6 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
-    rdoc (3.12.2)
-      json (~> 1.4)
     redis (3.0.6)
     redis-objects (0.7.0)
       redis (>= 3.0.2)
@@ -249,9 +250,6 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    sdoc (0.3.20)
-      json (>= 1.1.3)
-      rdoc (~> 3.10)
     simple_enum (1.6.8)
       activesupport (>= 3.0.0)
     simplecov (0.8.2)
@@ -259,14 +257,6 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    slim (2.0.2)
-      temple (~> 0.6.6)
-      tilt (>= 1.3.3, < 2.1)
-    slim-rails (2.1.0)
-      actionpack (>= 3.0, < 4.1)
-      activesupport (>= 3.0, < 4.1)
-      railties (>= 3.0, < 4.1)
-      slim (~> 2.0)
     slop (3.4.7)
     sprockets (2.10.1)
       hike (~> 1.2)
@@ -278,7 +268,6 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     subexec (0.2.3)
-    temple (0.6.7)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     therubyracer (0.12.0)
@@ -318,10 +307,12 @@ DEPENDENCIES
   active_model_serializers
   activeadmin!
   acts-as-taggable-on
+  angularjs-rails
   apipie-rails
   authority
   better_errors
   binding_of_caller
+  bootstrap-sass
   capistrano
   capistrano-ext
   capistrano-thin!
@@ -329,7 +320,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   countries
   coveralls
-  debugger
   devise
   factory_girl_rails
   faker!
@@ -337,6 +327,7 @@ DEPENDENCIES
   friendly_id (~> 5.0.0)
   geocoder
   geoip
+  haml-rails
   hashie
   html2slim
   jquery-rails
@@ -353,10 +344,8 @@ DEPENDENCIES
   rspec-rails
   rvm-capistrano
   sass-rails (~> 4.0.0)
-  sdoc
   simple_enum
   simplecov
-  slim-rails
   therubyracer
   thin
   tire
