@@ -83,6 +83,7 @@ GEM
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
+    bower-rails (0.7.0)
     builder (3.1.4)
     capistrano (2.15.5)
       highline
@@ -313,6 +314,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bower-rails
   capistrano
   capistrano-ext
   capistrano-thin!

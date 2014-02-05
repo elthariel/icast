@@ -1,4 +1,4 @@
-class AngularController < ApplicatioController
+class AngularController < ApplicationController
   def index
   end
 

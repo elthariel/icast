@@ -21,16 +21,15 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Support HAML templates
+# Templating languages
 gem 'haml-rails'
-# Support SLIM templates
 gem 'haml-rails'
 
 # Twitter bootstrap goodness
 gem 'bootstrap-sass'
 
-# Angular JS goodness
-gem 'angularjs-rails'
+# Integrate Bower with rails
+gem 'bower-rails'
 
 ################
 # Classic gems #
