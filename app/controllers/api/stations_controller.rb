@@ -228,7 +228,7 @@ well as deleting it (don't leave us please, we like you !)
 
   def station_params
     params.require(:station).permit(:slug, :name, :slogan, :country, :language, :logo, :genre_list,
-      streams_attributes: [:uri, :video, :mime, :bitrate, :samplerate, :channels, :width, :height, :framerate],
+      streams_attributes: [:id, :uri, :video, :mime, :bitrate, :samplerate, :channels, :width, :height, :framerate, :_delete],
       details_attributes: [:state, :city, :website, :email, :twitter, :phone, :description, :lineup],
       base64_logo: [:base64, :filename, :content_type])
   end

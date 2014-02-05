@@ -1,5 +1,5 @@
 class StreamSerializer < ActiveModel::Serializer
-  attributes :uri, :video, :mime, :bitrate, :samplerate, :channels,
+  attributes :id, :uri, :video, :mime, :bitrate, :samplerate, :channels,
     :framerate, :width, :height
 
   def video

@@ -33,7 +33,7 @@ class Contribution < ActiveRecord::Base
     if new_content?
       record = contributable_type.constantize.new(record_data)
     else
-      record = for_validation ? contributable.dup : contributable
+      record = for_validation ? contributable.clone : contributable
       record.assign_attributes(record_data)
     end
 

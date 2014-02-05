@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
 
   #####################
   # Active Admin setup
@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   def authenticate_admin_user!
     authenticate_user!
   end
+
   def current_admin_user
     if current_user and current_user.role_cd > 0
       current_user

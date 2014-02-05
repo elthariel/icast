@@ -7,6 +7,7 @@ class Base64FileUpload < StringIO
   #   - filename: the original name of the file
   #   - content_type: The original content type of the file
   def initialize(hash)
+    hash = hash.with_indifferent_access
     super Base64.decode64(hash[:base64])
 
     @original_filename  = hash[:filename]

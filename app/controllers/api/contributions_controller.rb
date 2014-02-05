@@ -155,7 +155,7 @@ Theses calls [requires authentication](/api/doc/1.0/sessions)
       p = params.require(:contribution)
         .permit(:contributable_type, :contributable_id, data: [
           :name, :slug, :slogan, :country, :language, current: [:artist, :title, :genre],
-          streams_attributes: [:uri, :video, :mime, :bitrate, :samplerate, :channel, :width, :height],
+          streams_attributes: [:id, :uri, :video, :mime, :bitrate, :samplerate, :channel, :width, :height, :_delete],
           details_attrinites: [:state, :city, :website, :email, :twitter, :phone, :logo, :description, :lineup]
           ])
     end

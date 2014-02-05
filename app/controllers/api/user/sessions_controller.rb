@@ -48,7 +48,6 @@ class Api::User::SessionsController < Api::BaseController
     user = User.find_for_database_authentication(email: user_session_params[:email])
 
     if user and user.valid_password?(user_session_params[:password])
-
       sign_in(:user, user)
       render json: user
     else
@@ -67,6 +66,7 @@ class Api::User::SessionsController < Api::BaseController
   api :GET, '/user/sessions/current(.format)', 'Returns the current logged-in user.'
   description "This is a convenience method to know if you're connected or not"
   def show
+    puts current_user
     if user_signed_in?
       render status: :ok, json: current_user
     else

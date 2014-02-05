@@ -21,22 +21,14 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# Use slim as our templating language
+gem 'slim-rails'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-gem 'unicorn'
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
@@ -73,8 +65,10 @@ end
 # Use thin as webserver
 gem 'thin'
 
-# Templating language, to avoid touching dirty html with their ugly <>
-gem 'slim-rails'
+#######################################################
+## Back-End / Api  ###
+######################
+
 
 # Authentication
 gem 'devise'
@@ -128,3 +122,5 @@ gem 'tire'
 
 # Happy Hashes
 gem 'hashie'
+
+gem 'rack-cors', :require => 'rack/cors'
