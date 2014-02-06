@@ -1,6 +1,6 @@
 'use strict';
 
-module = angular.module('radioxideApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'restangular', 'mgcrea.ngStrap'])
+module = angular.module('icastApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'restangular', 'mgcrea.ngStrap'])
 module.config ($routeProvider, RestangularProvider, $locationProvider) ->
   # Configuring Restangular
   RestangularProvider.setBaseUrl('/api/1')

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .directive('paginate', () ->
     templateUrl: '/angular/paginate.html'
     restrict: 'E'

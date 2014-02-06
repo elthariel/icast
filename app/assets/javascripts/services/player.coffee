@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .service 'Player',
     class Player
       constructor: () ->

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .controller 'GenreCtrl', ($scope, $routeParams, Restangular) ->
     ra = Restangular.all('stations').all("genre/#{$routeParams.genre}")
     ra.getList({page: $routeParams.page}).then (radios) ->

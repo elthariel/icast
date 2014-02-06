@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .directive 'radio', () ->
     templateUrl: '/angular/radio.html'
     scope:

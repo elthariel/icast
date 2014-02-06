@@ -79,9 +79,9 @@ Radioxide::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # For Devise
-  config.action_mailer.default_url_options = { :host => 'radioxide.lta.io' }
+  config.action_mailer.default_url_options = { :host => 'icast.lta.io' }
 
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_options = {from: 'no-reply@radioxide.lta.io'}
+  config.action_mailer.default_options = {from: 'no-reply@icast.lta.io'}
 end

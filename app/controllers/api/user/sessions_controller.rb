@@ -16,7 +16,7 @@ class Api::User::SessionsController < Api::BaseController
 
     To login, you have to create a user session using POST /user/sessions.
 
-    This method return a session cookie called '_radioxide_session', which MUST be provided
+    This method return a session cookie called '_icast_session', which MUST be provided
     to subsequent requests for these requests to be authenticated
 
     ### Logout
@@ -27,7 +27,7 @@ class Api::User::SessionsController < Api::BaseController
     ### Am i signed in ?
 
     To find out, issue a GET /user/sessions/current while providing your
-    _radioxide_session cookie. If you get a 200, you're logged in, if you get a
+    _icast_session cookie. If you get a 200, you're logged in, if you get a
     403, you're not.
 
     EOS
@@ -55,7 +55,7 @@ class Api::User::SessionsController < Api::BaseController
     end
   end
 
-  api :DELETE, '/user/sessions/current(.format)', 'Delete the current session | Log off radioxide api'
+  api :DELETE, '/user/sessions/current(.format)', 'Delete the current session | Log off icast api'
   def destroy
     if user_signed_in?
       sign_out(current_user)

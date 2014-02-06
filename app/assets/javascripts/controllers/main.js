@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

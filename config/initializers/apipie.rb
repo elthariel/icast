@@ -18,7 +18,7 @@ Apipie.configure do |config|
 
   RadiOxide (the name is to be changed) is a collaborative and open stream
   directory (for WebRadios and WebTVs). It's content is available under a CC-BY-
-  SA license and this api can be found on GitHub (elthariel/radioxide). Amongst
+  SA license and this api can be found on GitHub (elthariel/icast). Amongst
   our goals we can find :
 
     * Provide a more modern alternative to dir.xiph.org

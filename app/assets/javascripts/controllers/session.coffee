@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .controller 'SessionCtrl', ($scope, $rootScope, Authentication, Restangular, $location) ->
     $scope.logout = () ->
       console.log "Signin Out !"

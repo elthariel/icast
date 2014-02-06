@@ -5,9 +5,9 @@
 require 'capistrano-thin'
 require 'capistrano/ext/multistage'
 
-set :application,   'radioxide'
+set :application,   'icast'
 set :scm,           :git
-set :repository,    'git@github.com:elthariel/radioxide.git'
+set :repository,    'git@github.com:elthariel/icast.git'
 set :deploy_via,    :remote_cache
 set :use_sudo,      false
 

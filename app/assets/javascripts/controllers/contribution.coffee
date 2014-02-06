@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .controller 'ContributionCtrl', ($scope, Restangular, $routeParams, $location) ->
     id = $routeParams.id
     Restangular.one('stations', id).get().then (station) ->

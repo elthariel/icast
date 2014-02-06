@@ -52,8 +52,8 @@ class Api::StationsSearchController < Api::BaseController
 
   ### Examples
 
-      curl http://radioxide.lta.io/api/1/stations/country/it.json?page=3&page_size=2
-      curl http://radioxide.lta.io/api/1/stations/country/current.json
+      curl http://icast.lta.io/api/1/stations/country/it.json?page=3&page_size=2
+      curl http://icast.lta.io/api/1/stations/country/current.json
 
   ### Returned data
 
@@ -91,8 +91,8 @@ class Api::StationsSearchController < Api::BaseController
 
   ### Examples
 
-      curl http://radioxide.lta.io/api/1/stations/language/fr.json
-      curl http://radioxide.lta.io/api/1/stations/language/browser.json?page=4&page_size=8
+      curl http://icast.lta.io/api/1/stations/language/fr.json
+      curl http://icast.lta.io/api/1/stations/language/browser.json?page=4&page_size=8
 
   ### Returned data
 
@@ -122,8 +122,8 @@ class Api::StationsSearchController < Api::BaseController
 
   ### Examples
 
-      curl http://radioxide.lta.io/api/1/stations/genre/rock,disco.json
-      curl http://radioxide.lta.io/api/1/stations/language/news.json?page=42&page_size=23
+      curl http://icast.lta.io/api/1/stations/genre/rock,disco.json
+      curl http://icast.lta.io/api/1/stations/language/news.json?page=42&page_size=23
 
   ### Returned data
 
@@ -148,7 +148,7 @@ class Api::StationsSearchController < Api::BaseController
 
   ### Examples
 
-      curl http://radioxide.lta.io/api/1/stations/search.json?q=fr,disco,paris,news
+      curl http://icast.lta.io/api/1/stations/search.json?q=fr,disco,paris,news
 
   ### Returned data
 

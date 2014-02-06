@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .controller 'RegistrationCtrl', ($scope, Restangular, $location) ->
     $scope.register = () ->
       console.log $scope.user

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .controller 'SearchCtrl', ($scope, Restangular, $routeParams, $timeout, $location) ->
 
     $scope.selectRadio = (id) ->

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .service 'Authentication',
     class Authentication
       constructor: ($rootScope, Restangular) ->

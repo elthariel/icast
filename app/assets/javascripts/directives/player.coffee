@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .directive 'player', (Player) ->
     templateUrl: '/angular/player.html'
     restrict: 'E',

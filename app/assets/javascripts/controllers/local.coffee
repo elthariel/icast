@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('radioxideApp')
+angular.module('icastApp')
   .controller 'LocalCtrl', ($scope, Restangular, Player, $routeParams) ->
     baseLocal = Restangular.all('stations').all('local')
 
