@@ -1,5 +1,5 @@
 test:
   adapter: postgresql
-  database: radioxide_test
+  database: icast_test
   username: postgres
 

@@ -1,31 +1,27 @@
-== RadiOxyde : Radio's in the air
+== iCast
 
-[![Build Status](https://travis-ci.org/elthariel/radioxide.png?branch=master)](https://travis-ci.org/elthariel/radioxide)
-[![Coverage Status](https://coveralls.io/repos/elthariel/radioxide/badge.png?branch=master)](https://coveralls.io/r/elthariel/radioxide?branch=master)
+[![Build Status](https://travis-ci.org/elthariel/icast.png?branch=master)](https://travis-ci.org/elthariel/icast)
+[![Coverage Status](https://coveralls.io/repos/elthariel/icast/badge.png?branch=master)](https://coveralls.io/r/elthariel/icast?branch=master)
 
-NOTHING HERE YET, Sorry !
+iCast is a modern stream directory server with a REST API, that allows you to publish, edit, contribute and browse radio (and someday video) streams.
+There's also an Angular JS frontend
 
 ----
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Setup
+==== Ruby version
 
-Things you may want to cover:
+2.0 and superior
 
-* Ruby version
+==== System dependencies
 
-* System dependencies
+Redis, elasticsearch, postgresql
 
-* Configuration
+==== Configuration
 
-* Database creation
+Not much, except regular rails database config via `config/database.yml`
 
-* Database initialization
+==== How to run the test suite
 
-* How to run the test suite
+rspec
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
