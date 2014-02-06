@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Radioxide::Application.load_tasks
+ICast::Application.load_tasks

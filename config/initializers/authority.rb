@@ -45,7 +45,7 @@ Authority.configure do |config|
     update:   'updatable',
     delete:   'deletable',
 
-    # Radioxide custom
+    # ICast custom
     apply:    'applicable'
   }
 

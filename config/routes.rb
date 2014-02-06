@@ -1,6 +1,6 @@
 require 'icecast_constraints'
 
-Radioxide::Application.routes.draw do
+ICast::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {confirmations: 'confirmations'}
   apipie

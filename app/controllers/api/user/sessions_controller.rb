@@ -33,7 +33,7 @@ class Api::User::SessionsController < Api::BaseController
     EOS
   end
 
-  api :POST, '/user/sessions(.format)', 'Create a session | Login on Radioxide API'
+  api :POST, '/user/sessions(.format)', 'Create a session | Login on iCast API'
   param :user_session, Hash, desc: 'A JSON hash containing two keys: email and password'
   description <<-EOS
   ### Example

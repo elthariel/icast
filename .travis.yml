@@ -8,5 +8,5 @@ services:
   - redis
   - elasticsearch
 before_script:
-  - psql -c 'create database radioxide_test;' -U postgres
-  - cp /home/travis/build/elthariel/radioxide/config/database.yml.travis /home/travis/build/elthariel/radioxide/config/database.yml
+  - psql -c 'create database icast_test;' -U postgres
+  - cp /home/travis/build/elthariel/icast/config/database.yml.travis /home/travis/build/elthariel/icast/config/database.yml

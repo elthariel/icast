@@ -4,7 +4,7 @@ class Api::ContributionsController < Api::BaseController
     formats ['json']
     description <<-EOS
 
-Radioxide is a collaborative Internet Radio/Video Station database. All of its
+iCast is a collaborative Internet Radio/Video Station database. All of its
 content is community created and reviewed and is (will be) accessible under a
 CC-BY-SA . This API resource allows you to suggest new content and keep track of
 your past/current contributions status.
