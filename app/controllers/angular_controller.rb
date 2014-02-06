@@ -3,6 +3,8 @@ class AngularController < ApplicationController
   end
 
   def show
-    render params[:view]
+    template = render_to_string params[:view], layout: false
+    render text: template
+    #render partial: params[:view], layout: nil
   end
 end

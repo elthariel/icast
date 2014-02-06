@@ -1,0 +1,11 @@
+.jumbotron
+  %h1 Browse by genre
+  %p.lead Find the right station
+.row
+  .col-md-12
+    %ul#allgenres
+      %li{'ng-repeat' => '(genre, subgenres) in genres'}
+        %a{href: "/#/genre/{{genre}}"} {{genre}}:
+        %ul
+          %li{'ng-repeat' => 'subgenre in subgenres'}
+            %a{href: "/#/genres/{{subgenre}}"} {{subgenre}}

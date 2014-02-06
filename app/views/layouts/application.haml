@@ -1,0 +1,14 @@
+!!!
+%head
+  %meta{:charset => "utf-8"}
+  %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+  %title RaxiOxide
+  %meta{:content => "", :name => "description"}
+  %meta{:content => "width=device-width", :name => "viewport"}
+
+  = stylesheet_link_tag    :application
+
+%body{"ng-app" => "radioxideApp"}
+  = yield
+
+= javascript_include_tag :application

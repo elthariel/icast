@@ -1,0 +1,19 @@
+.jumbotron{'ng-hide' => 'query'}
+  %h1 Search for a station
+  %p.lead By typing into the search input at the top
+
+.row{'ng-show' => 'query'}
+  .col-md-12.text-center
+    %h1 Search for ya bestest station
+
+
+.row{'ng-show' => 'query'}
+  .col-md-5
+    %paginate{collection: 'radios', path: '/search/{{query}}'}
+    %ul{'ng-repeat' => 'radio in radios' }
+      %li{'ng-mouseover' => 'selectRadio(radio.slug)'}
+        %h3 {{radio.name}}
+        .slogan Select {{radio.slogan}}
+    %paginate{collection: 'radios', path: '/search/{{query}}'}
+  .col-md-7
+    %radio{radio: 'currentRadioId'}

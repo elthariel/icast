@@ -1,0 +1,55 @@
+.jumbotron
+  %h1 Improve RadiO2
+  %p.lead by suggesting better or new content
+.row
+  .col-md-6
+    %form.form-horizontal{role: :form}
+      .form-group
+        %label.col-sm-5.control-label Name
+        .col-sm-7
+          %input.form-control{type: :text, 'ng-model' => 'station.name'}
+      .form-group
+        %label.col-sm-5.control-label Slug
+        .col-sm-7
+          %input.form-control{type: :text, 'ng-model' => 'station.slug'}
+      .form-group
+        %label.col-sm-5.control-label Slogan
+        .col-sm-7
+          %input.form-control{type: :text, 'ng-model' => 'station.slogan'}
+      .form-group
+        %label.col-sm-5.control-label Genres
+        .col-sm-7
+          %textarea.form-control{'ng-model' => 'station.genres', rows: 3}
+      .form-group
+        %label.col-sm-5.control-label Language
+        .col-sm-3
+          %input.form-control{type: :text, 'ng-model' => 'station.language'}
+      .form-group
+        %label.col-sm-5.control-label Country
+        .col-sm-3
+          %input.form-control{type: :text, 'ng-model' => 'station.country'}
+      .form-group
+        %label.col-sm-5.control-label State
+        .col-sm-7
+          %input.form-control{type: :text, 'ng-model' => 'station.details.state'}
+      .form-group
+        %label.col-sm-5.control-label City
+        .col-sm-7
+          %input.form-control{type: :text, 'ng-model' => 'station.details.city'}
+      .form-group
+        %label.col-sm-5.control-label Logo
+        .col-sm-7
+          %input.form-control{type: :file, onchange: "angular.element(this).scope().setLogo(this.files[0]); angular.element(this).scope().$digest();"}
+  .col-md-6
+    %form{role: :form}
+      .form-group
+        %label Description
+        %textarea.form-control{'ng-model' => 'station.details.description', rows: 10, placeholder: 'Station\'s long description here :)'}
+      .form-group
+        %label Line-up
+        %textarea.form-control{'ng-model' => 'station.details.lineup', rows: 12, placeholder: "Station's line-up here:\n 10AM-12AM Morning Session with Mrs X"}
+.row
+  .col-md-12
+    .text-center
+      %button.btn.btn-primary{'ng-click' => 'submit()'} Submit your modifications !
+

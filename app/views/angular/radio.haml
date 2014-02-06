@@ -1,0 +1,27 @@
+.radio-directive
+  .help.text-muted{'ng-hide' => 'radio'}
+    %h2 Radio details
+    Place your mouse over one of the radio of the list to see the details
+  .radio-details{'ng-show' => 'radio'}
+    %h2
+      {{radio.name}}
+      .muted {{radio.slogan}}
+      %a{'ng-click' => 'play()'} Play!
+    %p
+      %img{'ng-show' => 'radio.logo.thumb', src: "http://localhost:3000{{radio.logo.thumb}}"}
+      %span.label.label-primary{'ng-repeat' => 'genre in radio.genre_list'}
+        {{genre}}
+    %p
+      %strong Description:
+      {{radio.description}}
+    %p
+      %strong Streams:
+      %ul{"ng-repeat" => 'stream in radio.streams'}
+        %li
+          %span.label.label-default {{stream.mime}}
+          {{stream.uri}}
+    %p{'ng-show' => 'currentUser'}
+      %strong
+        %a{href: '/#/contribute/{{radio.slug}}'} Edit this station !
+
+

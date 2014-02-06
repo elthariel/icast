@@ -1,0 +1,29 @@
+.row{'ng-show' => 'registered'}
+  .jumbotron
+    %h1 Thank you for registering.
+    %p.lead Now, check your mails for the activation link.
+
+.row{'ng-hide' => 'registered'}
+  .col-md-12.text-center
+    %h1 Create you account
+
+
+.row{'ng-hide' => 'registered'}
+  .col-md-6.col-md-offset-3.well
+    %form.form-horizontal{role: :form}
+      .form-group
+        %label.col-md-4 Email
+        .col-md-8
+          %input.form-control{type: :email, 'ng-model' => 'user.email', placeholder: 'your@email.com', required: true}
+      .form-group
+        %label.col-md-4 Password
+        .col-md-8
+          %input.form-control{type: :password, 'ng-model' => 'user.password', placeholder: 'password', required: true, pattern: ".{8,}", title: 'Password should be at least 8 character long'}
+      .form-group
+        %label.col-md-4 Confirm password
+        .col-md-8
+          %input.form-control{type: :password, 'ng-model' => 'user.password_confirmation', placeholder: 'password', required: true, pattern: ".{8,}", title: 'Password should be at least 8 character long'}
+      .form-group
+        .col-md-8.col-md-offset-4
+          %button.btn.btn-primary{'ng-click' => 'register()'} Register
+

@@ -1,0 +1,4 @@
+.paginate
+  %a.previous{href: "{{previous}}", 'ng-show' => 'previous'} Previous
+  %span.current Page {{meta.current_page}} / {{meta.total_page}}
+  %a.next{href: "{{next}}", 'ng-show' => 'next'} Next

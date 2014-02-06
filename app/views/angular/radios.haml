@@ -1,0 +1,12 @@
+.jumbotron
+  %h1 Local radios
+  %p.lead Enjoy a fine selection of radio near you
+.row
+  .col-md-5
+    %h2 Page {{radios.meta.current_page}}
+    %ul{'ng-repeat' => 'radio in radios' }
+      %li{'ng-mouseover' => 'selectRadio(radio.slug)'}
+        %h3 {{radio.name}}
+        .slogan Select {{radio.slogan}}
+  .col-md-7
+    %radio{radio: 'currentRadioId'}

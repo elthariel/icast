@@ -19,17 +19,20 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+# gem 'jquery-rails'
 
 # Templating languages
 gem 'haml-rails'
-gem 'haml-rails'
+gem 'slim-rails'
 
 # Twitter bootstrap goodness
 gem 'bootstrap-sass'
 
 # Integrate Bower with rails
 gem 'bower-rails'
+
+# Handle gracefully AngularJS minification with dependency injection
+gem 'ngmin-rails'
 
 ################
 # Classic gems #

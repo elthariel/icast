@@ -1,0 +1,16 @@
+.row
+  .col-md-12.text-center
+    %h1 Sign in to RadiO2
+  .col-md-12.text-center
+    %form.form-inline{role: :form}
+      .form-group
+        %label.sr-only Email address
+        %input.form-control{type: :email, placeholder: 'my@email.com', 'ng-model' => 'session.email'}
+      .form-group
+        %label.sr-only Password
+        %input.form-control{type: :password, placeholder: 'FakePassword', 'ng-model' => 'session.password'}
+      %button.btn.btn-primary{'ng-click' => 'login()'} Sign In
+  .col-md-12.text-center
+    .well
+      If you don't have an account yet, you can
+      %a{href: '#/signup'} Sign Up

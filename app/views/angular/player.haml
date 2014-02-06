@@ -1,0 +1,6 @@
+#player
+  .container{'ng-show' => 'current'}
+    %span{'ng-if' => 'playingUri'}
+      %audio{src: "{{playingUri}}", controls: true, autoplay: true}
+    %a{'ng-click' => 'play()'} Play
+    %a{'ng-click' => 'stop()'} Stop
