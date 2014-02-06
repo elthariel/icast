@@ -8,7 +8,7 @@
       .muted {{radio.slogan}}
       %a{'ng-click' => 'play()'} Play!
     %p
-      %img{'ng-show' => 'radio.logo.thumb', src: "http://localhost:3000{{radio.logo.thumb}}"}
+      %img{'ng-show' => 'radio.logo.thumb', src: "{{radio.logo.thumb}}"}
       %span.label.label-primary{'ng-repeat' => 'genre in radio.genre_list'}
         {{genre}}
     %p
@@ -22,6 +22,6 @@
           {{stream.uri}}
     %p{'ng-show' => 'currentUser'}
       %strong
-        %a{href: '/#/contribute/{{radio.slug}}'} Edit this station !
+        %a{href: '/contribute/{{radio.slug}}'} Edit this station !
 
 

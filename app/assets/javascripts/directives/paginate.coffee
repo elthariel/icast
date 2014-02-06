@@ -15,7 +15,7 @@ angular.module('radioxideApp')
         $scope.meta =  $scope.collection.meta
 
         if $scope.meta.current_page > 1
-          $scope.previous = "##{$attrs.path}/#{$scope.meta.current_page - 1}"
+          $scope.previous = "#{$attrs.path}/#{$scope.meta.current_page - 1}"
         if $scope.meta.current_page < $scope.meta.total_page
-          $scope.next = "##{$attrs.path}/#{$scope.meta.current_page + 1}"
+          $scope.next = "#{$attrs.path}/#{$scope.meta.current_page + 1}"
   )

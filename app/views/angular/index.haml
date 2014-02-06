@@ -5,11 +5,11 @@
         %a.navbar-brand{href: '#'} RadiO2
       %ul.nav.navbar-nav
         %li{'data-match-route' => '/'}
-          %a{href: '#/'} Home
+          %a{href: '/'} Home
         %li{'data-match-route' => '/local'}
-          %a{href: '#/local'} Local
+          %a{href: '/local'} Local
         %li{'data-match-route' => '/genres(/.*)?'}
-          %a{href: '#/genres'} By Genre
+          %a{href: '/genres'} By Genre
       %form.navbar-form.navbar-left{role: "search", 'ng-controller' => 'SearchCtrl', 'ng-submit' => 'submit()'}
         .form-group
           %input.form-control{type: :text, placeholder: 'Search', 'ng-model' => 'navbarQuery'}
@@ -18,12 +18,23 @@
         %li{"ng-show" => 'currentUser.email'}
           %a{href: '', 'ng-click' => 'logout()'} Sign Out
         %li{"ng-hide" => 'currentUser.email'}
-          %a{href: '#/signup'} Sign Up
+          %a{href: '/signup'} Sign Up
         %li{"ng-hide" => 'currentUser.email'}
-          %a{href: '#/signin'} Sign In
+          %a{href: '/signin'} Sign In
+
     .yield{'ng-view' => true}
+
   .footer
-    Yeaaaah for RadiO2
+    .row
+      .col-md-4
+        %ul
+          %li= link_to 'Api', apipie_apipie_path
+          %li= link_to 'Admin', admin_root_path
+      .col-md-4
+        %ul
+          %li
+            ♥ from the Radioxide team.
+
 %player
   Player will be here
 

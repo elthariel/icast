@@ -13,6 +13,8 @@ angular.module('radioxideApp')
       refreshCurrentUser: () ->
         @rootScope.currentUser = @baseUser.one('sessions', 'current').get().$object
 
+Authentication.$inject = ['$rootScope', 'Restangular']
+
 
 
 

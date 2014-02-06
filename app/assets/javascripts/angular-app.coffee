@@ -1,18 +1,9 @@
 'use strict';
 
-deps = [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute',
-  'restangular',
-  'mgcrea.ngStrap',
-]
-
-module = angular.module('radioxideApp', deps)
+module = angular.module('radioxideApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'restangular', 'mgcrea.ngStrap'])
 module.config ($routeProvider, RestangularProvider, $locationProvider) ->
   # Configuring Restangular
-  RestangularProvider.setBaseUrl('http://localhost:3000/api/1')
+  RestangularProvider.setBaseUrl('/api/1')
   RestangularProvider.setRequestSuffix('.json')
   RestangularProvider.setDefaultHttpFields({withCredentials: true})
 
@@ -26,32 +17,32 @@ module.config ($routeProvider, RestangularProvider, $locationProvider) ->
       res
 
 
-  $locationProvider.html5Mode(false)
+  $locationProvider.html5Mode(true)
 
   # Our application routes
   $routeProvider.when '/',
-    templateUrl: 'angular/main.html',
+    templateUrl: '/angular/main.html',
     controller:  'MainCtrl'
   .when '/search/:query?/:page?',
-    templateUrl: 'angular/search.html',
+    templateUrl: '/angular/search.html',
     controller:  'SearchCtrl'
   .when '/local/:page?',
-    templateUrl: 'angular/local.html',
+    templateUrl: '/angular/local.html',
     controller:  'LocalCtrl'
   .when '/genres',
-    templateUrl: 'angular/genres.html',
+    templateUrl: '/angular/genres.html',
     controller:  'AllGenresCtrl'
   .when '/genres/:genre/:page?',
-    templateUrl: 'angular/genre.html',
+    templateUrl: '/angular/genre.html',
     controller:  'GenreCtrl'
   .when '/contribute/:id',
-    templateUrl: 'angular/contrib.html',
+    templateUrl: '/angular/contrib.html',
     controller: 'ContributionCtrl'
   .when '/signin',
-    templateUrl: 'angular/signin.html',
+    templateUrl: '/angular/signin.html',
     controller:  'SessionCtrl'
   .when '/signup',
-    templateUrl: 'angular/signup.html',
+    templateUrl: '/angular/signup.html',
     controller:  'RegistrationCtrl'
   .otherwise
     redirectTo: '/'
