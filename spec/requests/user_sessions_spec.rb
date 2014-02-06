@@ -13,7 +13,7 @@ describe "Api::User::Sessions" do
     it 'sets a session cookie' do
       post api_user_sessions_path, user_session: {email: user.email, password: user.password}
 
-      expect(response.cookies['_radioxide_session']).not_to be_nil
+      expect(response.cookies['_icast_session']).not_to be_nil
     end
 
     it 'returns a 401 on wrong password', :show_in_doc do
