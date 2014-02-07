@@ -13,6 +13,7 @@ threads 0, 4
 daemonize       true
 pidfile         '/home/staging/app/current/tmp/pids/puma.pid'
 bind            'unix:///home/staging/app/current/tmp/sockets/puma.sock'
+state_path      'unix:///home/staging/app/current/tmp/sockets/puma.state'
 stdout_redirect '/home/staging/app/current/log/puma.stdout',
                 '/home/staging/app/current/log/puma.stderr', true
 
