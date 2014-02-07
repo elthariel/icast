@@ -3,7 +3,7 @@ module Geocodable
 
   included do
     geocoded_by :geocodable_address
-    before_save :geocode, if: -> (o) { ENV['SKIP_GEOCODE'].nil? and o.details and o.geocodable_address_changed? and o.geocodable_address.present? }
+    before_save :geocode, if: ->(o) { ENV['SKIP_GEOCODE'].nil? and o.details and o.geocodable_address_changed? and o.geocodable_address.present? }
   end
 
   def geocodable_address

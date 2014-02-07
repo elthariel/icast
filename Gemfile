@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'racc', platform: :ruby
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
 # Use PostgreSQL as the database for Active Record
-gem 'pg'
+gem 'pg', platforms: :ruby
+gem 'activerecord-jdbcpostgresql-adapter', platform: :jruby
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -58,17 +61,18 @@ group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
   gem 'capistrano-ext'
-  gem 'rvm-capistrano' # Setup rvm and use it
-  gem 'capistrano-thin', github: 'elthariel/capistrano-thin', :require => false
+  gem 'capistrano-rbenv', '~> 1.0' # Setup rbenv and use it
 end
 
-# Use thin as webserver
-gem 'thin'
+# Let's try the new kid on the block
+gem 'puma'
 
 #######################################################
 ## Back-End / Api  ###
 ######################
 
+# Optimised Json
+gem 'oj', platforms: :ruby
 
 # Authentication
 gem 'devise'

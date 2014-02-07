@@ -2,8 +2,10 @@
 # Deploy configuration for RadiOxyde
 #
 
-require 'capistrano-thin'
 require 'capistrano/ext/multistage'
+
+# Ruby interpreter automatic deployment
+set :rbenv_ruby_version, 'rbx-2.2.4'
 
 set :application,   'icast'
 set :scm,           :git
@@ -14,13 +16,8 @@ set :use_sudo,      false
 set :format,        :pretty
 set :log_level,     :debug
 
-set :shared_children, shared_children + %w{public/uploads}
+set :shared_children, shared_children + %w{public/uploads tmp/pids}
 set :keep_releases, 5
-
-# RVM automatic deployment
-set :rvm_ruby_string, 'ruby-2.0.0-p353'
-before 'deploy:setup', 'rvm:install_rvm'   # install RVM
-before 'deploy:setup', 'rvm:install_ruby'   # install RVM
 
 namespace :db do
   desc "Make symlink for database yaml"
@@ -34,6 +31,5 @@ after  'deploy:update_code',        'deploy:migrate'
 
 before "deploy:assets:precompile",  "db:symlink"
 
-
-require 'rvm/capistrano'
+require 'capistrano-rbenv'
 require 'bundler/capistrano'
