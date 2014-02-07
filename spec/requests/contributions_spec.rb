@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "Contributions" do
   include_context 'authenticated'
+  include_context 'api'
 
   let (:station)  { FactoryGirl.create :station }
   let (:contrib1) { FactoryGirl.create :contribution, user: user, contributable: station}

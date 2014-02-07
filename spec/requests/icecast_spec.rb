@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'Icecast compatibility API' do
+  include_context 'api'
+
   let (:station) do
     { "sn"          => "my super name !",
       "genre"       => "trance",
@@ -15,15 +17,15 @@ describe 'Icecast compatibility API' do
 
   describe "#add" do
     it 'creates a Station, a StationDetails and a Stream' do
-      expect {post '/api/1/icecast', station.merge(action: 'add')}
+      expect {post '/1/icecast', station.merge(action: 'add')}
         .to(change { Station.count }.by(1))
     end
   end
 
   describe "#remove" do
     it 'removes the Station' do
-      post '/api/1/icecast', station.merge(action: 'add')
-      expect { post '/api/1/icecast', action: 'remove', sid: 'my-super-name' }
+      post '/1/icecast', station.merge(action: 'add')
+      expect { post '/1/icecast', action: 'remove', sid: 'my-super-name' }
         .to(change { Station.count }.by(-1))
     end
   end

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'Api::User::Passwords' do
+  include_context 'api'
+
   let (:user) { FactoryGirl.create :user }
 
   describe "POST /user/confirmations" do

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "Api::User::Sessions" do
+  include_context 'api'
+
   let (:user) { FactoryGirl.create :confirmed_user}
 
   describe "POST /user/sessions" do

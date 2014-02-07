@@ -1,7 +1,7 @@
 Apipie.configure do |config|
-  config.app_name                = "RadiOxide"
-  config.api_base_url            = "/api/1"
-  config.doc_base_url            = "/api/doc"
+  config.app_name                = "iCast"
+  config.api_base_url            = "/1"
+  config.doc_base_url            = "/doc"
   # were is your API defined?
   config.api_controllers_matcher = "#{Rails.root}/app/controllers/api/**/*.rb"
 
@@ -12,14 +12,13 @@ Apipie.configure do |config|
   config.markup = Apipie::Markup::Markdown.new
 
   config.app_info = <<-DESC
-  # RadiOxide API Documentation
+  # iCast API Documentation
 
   ## Introduction
 
-  RadiOxide (the name is to be changed) is a collaborative and open stream
-  directory (for WebRadios and WebTVs). It's content is available under a CC-BY-
-  SA license and this api can be found on GitHub (elthariel/icast). Amongst
-  our goals we can find :
+  iCast is a collaborative and open stream directory (for WebRadios and WebTVs).
+  It's content is available under a CC-BY- SA license and this api can be found
+  on GitHub (elthariel/icast). Amongst our goals we can find :
 
     * Provide a more modern alternative to dir.xiph.org
     * Provide a more open alternative to tunein/radionomy/shoutcast directory

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'GenresController' do
+  include_context 'api'
+
   describe "GET /genres.json" do
     it 'works !', :show_in_doc do
       get api_genres_path

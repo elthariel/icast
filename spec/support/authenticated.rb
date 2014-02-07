@@ -1,4 +1,5 @@
 shared_context 'authenticated' do
+  include_context 'api'
   let (:user) { FactoryGirl.create :confirmed_user }
 
   def authenticate!

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'Api::User:RegistrationController' do
+  include_context 'api'
+
   let(:valid_user)   { { email: 'test@test.fr', password: 'qweasd42', password_confirmation: 'qweasd42' } }
   let(:invalid_user) { { email: 'test@test.fr', password: 'qweasd42', password_confirmation: 'qweasd' } }
 
