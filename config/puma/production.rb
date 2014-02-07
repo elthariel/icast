@@ -6,8 +6,9 @@ directory '/home/production/app/current'
 # Rails/Rack env
 environment 'production'
 
-# Threading configuration. Since this is production, we don't need a high value
-threads 0, 4
+# Concurrency configuration
+threads 4, 32
+workers 4
 
 # Daemonize stuff
 daemonize       true
