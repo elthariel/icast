@@ -4,7 +4,6 @@ angular.module('icastApp')
   .service 'Authentication',
     class Authentication
       constructor: ($rootScope, Restangular) ->
-        console.log "Creating Authentication service."
 
         @baseUser = Restangular.all('user')
         @rootScope = $rootScope

@@ -3,7 +3,8 @@
 module = angular.module('icastApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'restangular', 'mgcrea.ngStrap'])
 module.config ($routeProvider, RestangularProvider, $locationProvider) ->
   # Configuring Restangular
-  RestangularProvider.setBaseUrl('/api/1')
+  apiBaseUrl = "http://api.#{window.location.host}/1"
+  RestangularProvider.setBaseUrl(apiBaseUrl)
   RestangularProvider.setRequestSuffix('.json')
   RestangularProvider.setDefaultHttpFields({withCredentials: true})
 

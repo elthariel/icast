@@ -29,7 +29,7 @@ module ICast
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '/api/*', credentials: true, headers: :any, max_age: 1,
+        resource '/1/*', credentials: true, headers: :any, max_age: 1,
           :methods => [:get, :post, :delete, :options, :put, :patch]
       end
     end
