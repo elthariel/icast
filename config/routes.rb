@@ -4,7 +4,7 @@ ICast::Application.routes.draw do
   #
   # API subdomain
   #
-  constraints subdomain: 'api' do
+  constraints subdomain: /^api\.?/ do
     apipie
     get '/', to: "apipie/apipies#index", as: :api_root
 

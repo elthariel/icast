@@ -33,3 +33,4 @@ before "deploy:assets:precompile",  "db:symlink"
 
 require 'capistrano-rbenv'
 require 'bundler/capistrano'
+require 'puma/capistrano'

@@ -7,7 +7,6 @@ class Api::IcecastController < ApplicationController
   #   "url"=>"", "listenurl"=>"http://still:8042/test", "type"=>"application/ogg",
   #   "stype"=>"Vorbis", "b"=>"96", "\r\n"=>nil}
   def add
-    puts 'add called'
     slug = params[:sn].parameterize
 
     @station = Station.new(
@@ -28,7 +27,6 @@ class Api::IcecastController < ApplicationController
       response.headers['TouchFreq'] = '10'
       iceast_success 'Station successfully created'
     else
-      puts @station.errors.full_messages.inspect
       icecast_error @station.errors.full_messages.inspect
     end
 

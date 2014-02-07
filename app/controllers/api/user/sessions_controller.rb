@@ -66,7 +66,6 @@ class Api::User::SessionsController < Api::BaseController
   api :GET, '/user/sessions/current(.format)', 'Returns the current logged-in user.'
   description "This is a convenience method to know if you're connected or not"
   def show
-    puts current_user
     if user_signed_in?
       render status: :ok, json: current_user
     else
