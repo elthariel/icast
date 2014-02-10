@@ -2,7 +2,7 @@ require 'uri'
 
 class WebsiteLanguageUpdater < BaseUpdater
   TLD_EXCLUDE  = [ 'com', 'net', 'io', 'fm', 'org', 'eu', 'tk', 'gov',
-    'biz', 'info', 'edu', 'mobi' ]
+    'biz', 'info', 'edu', 'mobi', 'pro' ]
   TLD_ISO2_MAP = {
     uk:   :gb
   }
