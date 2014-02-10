@@ -12,11 +12,7 @@ namespace :sync do
     dir.each do |entry|
       station_hash = {
         name:       entry.normalized_name,
-        genre_list: [entry.genre],
-        metadata: {
-          title: entry.current_title,
-          genre: entry.genre
-        },
+        genre_list: entry.genre.split(/ ,;/).map { |s| s.downcase }.uniq.compact,
         details_attributes: {
           origin: 'xiph_importer'
         }
@@ -36,15 +32,16 @@ namespace :sync do
       begin
         station = Station.friendly.find(station_hash[:name].parameterize)
       rescue ActiveRecord::RecordNotFound
-        puts "Creating Stream for #{station_hash[:name]}"
+        puts "Creating Station for #{station_hash[:name]}"
         station = Station.create(name: station_hash[:name])
       end
-      puts "Updating Stream for #{station_hash[:name]} (#{station.slug})"
+      puts "Updating Station for #{station_hash[:name]} (#{station.slug})"
       station.update_attributes(station_hash)
 
-      # FIXME Be a *little* bit more clever here (or less lazy, pick one)
-      station.streams.destroy_all
-      station.streams.create(stream_hash)
+      unless station.streams.where(uri: stream_hash[:uri]).first
+        puts "Creating Stream #{stream_hash[:uri]}"
+        station.streams.create(stream_hash)
+      end
     end
   end
 end

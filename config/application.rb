@@ -24,7 +24,10 @@ module ICast
       g.scaffold_controller = :scaffold_controller
     end
 
-    config.autoload_paths += ["#{config.root}/app/classes"]
+    config.autoload_paths += [
+      "#{config.root}/app/classes",
+      "#{config.root}/app/services"
+    ]
 
     config.middleware.use Rack::Cors do
       allow do

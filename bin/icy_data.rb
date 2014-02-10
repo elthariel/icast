@@ -14,6 +14,7 @@ socket.send "GET #{http_path} HTTP/1.0\r\n\r\n", 0
 
 data = ''
 while line = socket.gets and line.strip != "" and data.size < 1024
+  puts "readline"
   data = data + line
 end
 

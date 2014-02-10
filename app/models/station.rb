@@ -1,3 +1,5 @@
+require 'timeout'
+
 class Station < ActiveRecord::Base
   extend FriendlyId
 
