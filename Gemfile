@@ -59,9 +59,9 @@ group :development do
   gem 'html2slim'
 
   # Use Capistrano for deployment
-  gem 'capistrano'
+  gem 'capistrano', '~> 2'
   gem 'capistrano-ext'
-  gem 'capistrano-rbenv', '~> 1.0' # Setup rbenv and use it
+  gem 'capistrano-rbenv'#, '~> 1.0' # Setup rbenv and use it
 end
 
 # Let's try the new kid on the block

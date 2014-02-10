@@ -12,11 +12,12 @@ set :scm,           :git
 set :repository,    'git@github.com:elthariel/icast.git'
 set :deploy_via,    :remote_cache
 set :use_sudo,      false
+set :sudo,          'env'
 
 set :format,        :pretty
 set :log_level,     :debug
 
-set :shared_children, shared_children + %w{public/uploads tmp/pids}
+set :shared_children, shared_children + %w{public/uploads public/assets tmp/pids}
 set :keep_releases, 5
 
 namespace :db do

@@ -1,10 +1,4 @@
-class IcyUpdater
-  attr_reader :station
-
-  def initialize(station)
-    @station = station
-  end
-
+class IcyUpdater < BaseUpdater
   def update!
     begin
       Timeout::timeout(2) do
