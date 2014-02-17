@@ -4,11 +4,13 @@ angular.module('icastApp')
   .controller 'LocalCtrl', ($scope, Restangular, Player, $routeParams) ->
     baseLocal = Restangular.all('stations').all('local')
 
-    baseLocal.getList({page: $routeParams.page}).then (radios) ->
+    baseLocal.getList({page: $routeParams.page, page_size: 8}).then (radios) ->
       $scope.radios = radios
 
-    $scope.selectRadio = (id) ->
-      $scope.currentRadioId = id #Restangular.one('stations', id).get().$object
+    $scope.play = (radio) ->
+      Player.play(radio)
+    $scope.details = (radio) ->
+      $scope.currentRadioId = radio.id #Restangular.one('stations', id).get().$object
 
 
 

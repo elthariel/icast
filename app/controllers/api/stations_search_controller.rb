@@ -35,6 +35,7 @@ class Api::StationsSearchController < Api::BaseController
     @stations = Station.where(country: @geoip['country_code2'].downcase)
       .page(params[:page] || 0)
       .per(params[:page_size] || 20)
+      .order('updated_at DESC')
     render_stations
   end
 

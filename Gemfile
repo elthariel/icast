@@ -30,6 +30,8 @@ gem 'slim-rails'
 
 # Twitter bootstrap goodness
 gem 'bootstrap-sass'
+## FontAwesome for bootstrap
+gem 'font-awesome-sass'
 
 # Integrate Bower with rails
 gem 'bower-rails'

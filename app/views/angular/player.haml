@@ -1,6 +1,25 @@
 #player
-  .container{'ng-show' => 'current'}
-    %span{'ng-if' => 'playingUri'}
-      %audio{src: "{{playingUri}}", controls: true, autoplay: true}
-    %a{'ng-click' => 'play()'} Play
-    %a{'ng-click' => 'stop()'} Stop
+  .container
+    .controls.pull-left
+      %a.btn.btn-primary.btn-lg
+        %i.fa.fa-play
+      .btn-group-vertical
+        %a.btn.btn-default.btn-sm
+          %i.fa.fa-refresh
+        %a.btn.btn-default.btn-sm
+          %i.fa.fa-heart
+      %a{href: '#'}
+        %img.logo{src: '/assets/fallback/logo_medium_default.png'}
+
+      .volume-controls
+        %a
+          %i.fa.fa-volume-up
+
+    .infos
+      .stream
+        .name
+          Radio Graffiti
+        .slogan
+          L'espace liberté
+      .playing
+        Manu le Malin - Green Spirit (featuring Lenny Dee)

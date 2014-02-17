@@ -1,9 +1,10 @@
-.container
-  .header
-    .navbar.navbar-default{role: :navigation, 'bs-navbar' => true}
+
+.header
+  %nav.navbar.navbar-default.navbar-fixed-top{role: :navigation, 'bs-navbar' => true}
+    .container
       .navbar-header
         %a.navbar-brand{href: '/'} iCast
-      %ul.nav.navbar-nav
+      %ul.nav.navbar-nav.navbar-left
         %li{'data-match-route' => '/'}
           %a{href: '/'} Home
         %li{'data-match-route' => '/local'}
@@ -12,8 +13,8 @@
           %a{href: '/genres'} By Genre
       %form.navbar-form.navbar-left{role: "search", 'ng-controller' => 'SearchCtrl', 'ng-submit' => 'submit()'}
         .form-group
-          %input.form-control{type: :text, placeholder: 'Search', 'ng-model' => 'navbarQuery'}
-        %button.btn.btn-default{type: "submit"} Go
+          %input#nav-search.form-control{type: :text, placeholder: 'Search for name, genre, ...', 'ng-model' => 'navbarQuery'}
+        /%button.btn.btn-default{type: "submit"} Go
       %ul.nav.navbar-nav.navbar-right{'ng-controller' => 'SessionCtrl'}
         %li{"ng-show" => 'currentUser.email'}
           %a{href: '', 'ng-click' => 'logout()'} Sign Out
@@ -22,7 +23,8 @@
         %li{"ng-hide" => 'currentUser.email'}
           %a{href: '/signin'} Sign In
 
-    .yield{'ng-view' => true}
+.container
+  .yield{'ng-view' => true}
 
   .footer
     .row
@@ -39,7 +41,7 @@
             ♥ from the iCast team.
 
 %player
-  Player will be here
+
 
 /[if lt IE 9]
 /  %script{:src => "bower_components/es5-shim/es5-shim.js"}

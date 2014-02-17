@@ -1,4 +1,4 @@
-.paginate
-  %a.previous{href: "{{previous}}", 'ng-show' => 'previous'} Previous
+.paginate.text-center
+  %a.btn.btn-xs.btn-primary.previous{href: "{{previous}}", 'ng-class' => '{disabled: !previous}'} Previous
   %span.current Page {{meta.current_page}} / {{meta.total_page}}
-  %a.next{href: "{{next}}", 'ng-show' => 'next'} Next
+  %a.btn.btn-xs.btn-primary.next{href: "{{next}}", 'ng-class' => '{disabled: !next}'} Next

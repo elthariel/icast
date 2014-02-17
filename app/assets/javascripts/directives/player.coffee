@@ -10,8 +10,8 @@ angular.module('icastApp')
       $scope.play = () ->
         console.log "Play !"
         $scope.isPlaying = true
-        #$scope.playingUri = $sce.trustAsResourceUrl $scope.current.streams[0].uri
-        $scope.playingUri = $sce.trustAsResourceUrl 'http://streaming202.radionomy.com:80/City-Dance-Radio'
+        $scope.playingUri = $sce.trustAsResourceUrl $scope.current.streams[0].uri
+        #$scope.playingUri = $sce.trustAsResourceUrl 'http://streaming202.radionomy.com:80/City-Dance-Radio'
         console.log $scope.playingUri
       $scope.stop = () ->
         console.log "Stop !"

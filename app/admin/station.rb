@@ -5,15 +5,16 @@ ActiveAdmin.register Station do
     end
   end
 
-  permit_params :name, :slug, :country, :language, :genre_list,
-    details_attributes: [:state, :city, :website, :email, :twitter, :phone, :logo, :description, :lineup],
-    streams_attributes: [:uri, :mime, :video, :bitrate, :samplerate, :width, :height, :framerate, :_destroy]
+  permit_params :name, :slug, :slogan, :country, :language, :genre_list, :logo,
+    details_attributes: [:id, :state, :city, :website, :email, :twitter, :phone, :description, :lineup],
+    streams_attributes: [:id, :uri, :mime, :video, :bitrate, :samplerate, :width, :height, :framerate, :_destroy]
 
   form do |f|
     f.inputs 'Main' do
       f.input :name
       f.input :slug
       f.input :slogan
+      f.input :logo, as: :file
       f.input :country, as: :string #FIXME Use country-select gem
       f.input :language
       f.input :genre_list
@@ -28,7 +29,6 @@ ActiveAdmin.register Station do
       details.input :email
       details.input :twitter
       details.input :phone
-      details.input :logo, as: :file
       details.input :description
       details.input :lineup
     end

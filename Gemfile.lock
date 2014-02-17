@@ -138,6 +138,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    font-awesome-sass (4.0.2)
+      sass-rails (>= 3.1.1)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
     friendly_id (5.0.2)
@@ -355,6 +357,7 @@ DEPENDENCIES
   factory_girl_rails
   faker!
   figaro
+  font-awesome-sass
   friendly_id (~> 5.0.0)
   geocoder
   geoip

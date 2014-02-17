@@ -1,0 +1,7 @@
+%li.media.radio-thumb
+  %a.pull-left{href: '#', 'ng-click' => 'imgClick()'}
+    %img{src: "{{radio.logo.medium}}", alt: "{{radio.name}}"}
+  .media-body{'ng-click' => 'bodyClick()'}
+    %h4.media-heading {{radio.name}}
+    %span{'ng-show' => 'radio.slogan'} {{radio.slogan}}
+    %span{'ng-hide' => 'radio.slogan'} Contribute a slogan

@@ -1,27 +1,43 @@
 .radio-directive
-  .help.text-muted{'ng-hide' => 'radio'}
+  .help.text-info{'ng-hide' => 'radio'}
     %h2 Radio details
-    Place your mouse over one of the radio of the list to see the details
+    Click on the name of a stream to get the stream's details
   .radio-details{'ng-show' => 'radio'}
+    .radios-actions.pull-right.text-center
+      %img.thumbnail{src: "{{radio.logo.medium}}", alt:"{{radio.name}} logo"}
+      %a{href: '{{radio.details.website}}', target: '_blank', 'ng-show' => 'radio.details.website'}
+        %i.fa.fa-home.fa-3x
+      %a{href: 'http://twitter.com/{{radio.details.twitter}}', target: '_blank', 'ng-show' => 'radio.details.twitter'}
+        %i.fa.fa-twitter.fa-3x
+      %a{href: 'mailto:{{radio.details.email}}', target: '_blank', 'ng-show' => 'radio.details.email'}
+        %i.fa.fa-envelope.fa-3x
+
     %h2
+      %a{href: '#', 'ng-click' => 'play()'}
+        %i.fa.fa-play
+        .sr-only Play
       {{radio.name}}
-      .muted {{radio.slogan}}
-      %a{'ng-click' => 'play()'} Play!
-    %p
-      %img{'ng-show' => 'radio.logo.thumb', src: "{{radio.logo.thumb}}"}
-      %span.label.label-primary{'ng-repeat' => 'genre in radio.genre_list'}
+      %small {{radio.slogan}}
+
+    %h4
+      %small.label.label-success{'ng-repeat' => 'genre in radio.genre_list'}
         {{genre}}
+
+    .description{'ng-show' => 'radio.details.description'}
+      %h3 Presentation
+      %p.text-justify
+        {{radio.details.description}}
+
+    .lineup{'ng-show' => 'radio.details.lineup.length > 0'}
+      %h3 Lineup
+      %pre
+        {{radio.details.lineup}}
+
     %p
-      %strong Description:
-      {{radio.description}}
-    %p
-      %strong Streams:
-      %ul{"ng-repeat" => 'stream in radio.streams'}
-        %li
-          %span.label.label-default {{stream.mime}}
-          {{stream.uri}}
-    %p{'ng-show' => 'currentUser'}
-      %strong
-        %a{href: '/contribute/{{radio.slug}}'} Edit this station !
+      %strong formats:
+      %span.label.label-default{"ng-repeat" => 'stream in radio.streams'} {{stream.mime}}
+
+    .contribute.text-center{'ng-show' => 'currentUser'}
+      %a.btn.btn-lg.btn-primary{href: '/contribute/{{radio.slug}}'} Edit this station !
 
 

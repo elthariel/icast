@@ -1,0 +1,35 @@
+$rt-height: 84px
+$rt-margin-bottom: $rt-height*0.2
+
+ul.radio-thumb
+  list-style: none
+  padding: 0px 0px 0px 0px
+
+  li.radio-thumb
+    background-color: lighten($body-bg, 5%)
+
+    margin: 5px 5px $rt-margin-bottom 5px
+
+    height: $rt-height
+
+    border-style: solid
+    border-width: 2px 2px 2px 2px
+    border-color: darken($body-bg, 5%)
+
+    &:hover
+      border-color: darken($brand-primary, 5%)
+
+
+    img
+      height: $rt-height - 2
+      width: $rt-height - 2
+      border-style: solid
+      border-width: 0px 2px 0px 0px
+      border-color: darken($body-bg, 5%)
+
+    .media-body
+      cursor: pointer
+      padding-top: 10px
+      height: 100%
+
+

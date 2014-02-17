@@ -1,10 +1,74 @@
+$player-height: 51px
+
 #player
   position: fixed
   bottom: 0px
-  height: 42px
+  height: $player-height
   width: 100%
-  background-color: #ccc
+  background-color: darken($body-bg, 10%)
 
   border-top-style: solid
-  border-top-width: 1px
+  border-top-width: 0px
   border-top-color: #000
+
+  @include box-shadow(0 0 2px darken($body-bg, 15%))
+
+  .btn-group-vertical
+    margin-left: -3px
+
+  .btn-sm
+    color: $brand-info
+    @include button-size($padding-large-vertical / 2, $padding-large-horizontal / 2, $font-size-large / 1.6, $line-height-large / 2, $border-radius-small)
+
+  .controls
+    position: relative
+    border-right-style: solid
+    border-right-width: 2px
+    border-right-color: $brand-primary
+    margin-right: 5px
+    img.logo
+      height: $player-height
+      width: $player-height
+      overflow: hidden
+      border-style: solid
+      border-color: darken($body-bg, 12%)
+      border-width: 0 1px 0 1px
+      margin-left: -3px
+
+    .volume-controls
+      position: relative
+      display: inline-block
+      height: $player-height
+      margin: 0 10px 0 3px
+      a
+        vertical-align: middle
+        color: $text-color
+        text-decoration: none
+      i.fa
+        position: relative
+        top: $player-height / 8
+        font-size: $player-height / 2
+
+  .infos
+    display: inline-block
+    height: $player-height
+    .stream
+      height: $player-height / 2
+      .name
+        display: inline
+        text-transform: capitalize
+        font-size: $player-height / 2 - 2
+        line-height: $player-height / 2 - 2
+      .slogan
+        display: inline
+        margin-left: 0.5em
+        font-size: $player-height / 2.75
+        font-style: italic
+        line-height: $player-height / 3
+        color: darken($text-color, 17%)
+    .playing
+      height: $player-height / 2
+      color: $brand-info
+
+
+

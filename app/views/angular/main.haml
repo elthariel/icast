@@ -1,12 +1,31 @@
-.jumbotron
-  %h1 Open Streams Directory
-  %p.lead
-    /%img{:alt => "I'm Yeoman", :src => "images/yeoman.png"}/
-    %br/
-    iCast frontend is under heavy development. API is more stable and tested
-  %p
-    %a.btn.btn-lg.btn-success{"ng-href" => "#"} Splendid!
-.row.marketing
-  %h4 Add a description here
-  %p
-    To explain people how cool and usefulle we are (or will be)
+.row{'ng-controller' => 'MainCtrl'}
+  .col-md-5
+    %h2.text-center Local streams
+    %ul.media-list.radio-thumb
+      %radiothumb{'ng-repeat' => 'radio in locals', radio: 'radio', 'img-click' => 'play(radio)', 'body-click' => 'play(radio)'}
+    %a.btn.btn-default{href: '/local'} More local radios
+    %a.btn.btn-default.pull-right{href: '/genres'} Browse by genre
+
+  .col-md-7
+    .jumbotron
+      %h1 Hello iCast !
+      %p.lead
+        A modern, open and collaborative stream directory.
+        %small.text-info
+          iCast frontend is under heavy development. API is more stable and tested
+      %p
+        %a.btn.btn-lg.btn-success{"ng-href" => "#"} About iCast
+    .row
+      .col-md-6
+        .well
+          %h2 Collaborative
+          %p Pellentesque purus ante, sagittis vitae ante eu, fermentum dapibus sapien. Quisque ultrices sapien consectetur nibh ultricies, in venenatis orci ornare. Praesent eget sagittis risus. Donec quis augue quam. Pellentesque bibendum rhoncus eleifend.
+          %h2 Modern
+          %p Integer et enim rhoncus, euismod lectus non, tempus lorem. Duis at sem ut elit feugiat aliquet. Sed ac justo iaculis, faucibus est sit amet, faucibus ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras dictum non nulla id facilisis.
+      .col-md-6
+        .well
+          %h2 Open
+          %p Aenean ultrices ullamcorper risus sit amet condimentum. In adipiscing pellentesque erat, at aliquet mauris molestie sit amet. Phasellus eros leo, tincidunt rhoncus elementum egestas, vestibulum a tellus. Nunc laoreet risus at sapien laoreet, eget tincidunt erat laoreet. Pellentesque feugiat nibh augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc iaculis, lacus nec hendrerit venenatis, nulla felis aliquam justo, in ullamcorper leo erat id orci.
+    .row
+      .col-md-12
+        %h3 Popular genre here (at some point)

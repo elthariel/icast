@@ -1,13 +1,15 @@
-.jumbotron
+.well.text-center
   %h1 Local radios
   %p.lead Enjoy a fine selection of radio near you
 .row
   .col-md-5
     %paginate{collection: 'radios', path: '/local'}
-    %ul{'ng-repeat' => 'radio in radios' }
-      %li{'ng-mouseover' => 'selectRadio(radio.slug)'}
-        %h3 {{radio.name}}
-        .slogan Select {{radio.slogan}}
+    %ul.media-list.radio-thumb.with-details
+      %radiothumb{'ng-repeat' => 'radio in radios', radio: 'radio', 'img-click' => 'play(radio)', 'body-click' => 'details(radio)' }
+    /%ul{'ng-repeat' => 'radio in radios' }
+    /  %li{'ng-mouseover' => 'selectRadio(radio.slug)'}
+    /    %h3 {{radio.name}}
+    /    .slogan Select {{radio.slogan}}
     %paginate{collection: 'radios', path: '/local'}
   .col-md-7
     %radio{radio: 'currentRadioId'}

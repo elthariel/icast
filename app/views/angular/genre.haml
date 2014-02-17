@@ -1,16 +1,11 @@
-.jumbotron
+.well.text-center
   %h1 {{genre}}
   %p.lead Enjoy!
 .row
-  .col-md-12
-    Related genres: [[FIXME]]
-.row
   .col-md-5
     %paginate{collection: 'radios', path: '/genres/{{genre}}'}
-    %ul{'ng-repeat' => 'radio in radios' }
-      %li{'ng-mouseover' => 'selectRadio(radio.slug)'}
-        %h3 {{radio.name}}
-        .slogan Select {{radio.slogan}}
+    %ul.media-list.radio-thumb.with-details
+      %radiothumb{'ng-repeat' => 'radio in radios', radio: 'radio', 'img-click' => 'play(radio)', 'body-click' => 'details(radio)' }
     %paginate{collection: 'radios', path: '/genres/{{genre}}'}
   .col-md-7
     %radio{radio: 'currentRadioId'}
