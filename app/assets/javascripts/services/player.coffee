@@ -69,3 +69,4 @@ angular.module('icastApp')
         @stop()
         @play()
 
+Player.$inject = ['$rootScope']
