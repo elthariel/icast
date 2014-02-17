@@ -3,7 +3,6 @@
 angular.module('icastApp')
   .controller 'SessionCtrl', ($scope, $rootScope, Authentication, Restangular, $location) ->
     $scope.logout = () ->
-      console.log "Signin Out !"
       Restangular.all('user').one('sessions', 'current').remove().then () ->
         $rootScope.currentUser = null
 

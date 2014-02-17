@@ -1,8 +1,10 @@
 #player
   .container
     .controls.pull-left
-      %a.btn.btn-primary.btn-lg
+      %a.btn.btn-primary.btn-lg{'ng-hide' => 'player.playing', 'ng-click' => 'play()', 'ng-class' => '{disabled: !player.radio.streams}'}
         %i.fa.fa-play
+      %a.btn.btn-primary.btn-lg{'ng-show' => 'player.playing', 'ng-click' => 'stop()'}
+        %i.fa.fa-stop
       .btn-group-vertical
         %a.btn.btn-default.btn-sm
           %i.fa.fa-refresh
@@ -11,15 +13,16 @@
       %a{href: '#'}
         %img.logo{src: '/assets/fallback/logo_medium_default.png'}
 
-      .volume-controls
+      #volume-controls
         %a
           %i.fa.fa-volume-up
+
 
     .infos
       .stream
         .name
-          Radio Graffiti
+          {{player.radio.name}}
         .slogan
-          L'espace liberté
+          {{player.radio.slogan}}
       .playing
-        Manu le Malin - Green Spirit (featuring Lenny Dee)
+        {{player.playingText}}

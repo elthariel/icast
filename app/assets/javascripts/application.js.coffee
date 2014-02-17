@@ -1,6 +1,9 @@
 #= require jquery/jquery
 # require jquery_ujs
 #
+# SoundManager
+#= require soundmanager2
+#
 # Angular Stuff
 #= require angular/angular
 #= require bootstrap

@@ -29,7 +29,6 @@ angular.module('icastApp')
     cTimeout = (delay, fn) ->
       $timeout(fn, delay)
     $scope.submit = () ->
-      console.log "Submit"
       $location.path("/search/#{$scope.navbarQuery}")
 
     $scope.$watch 'navbarQuery', () ->
