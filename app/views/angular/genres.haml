@@ -9,6 +9,6 @@
           %i.fa.fa-folder-o.pull-left
           %h3.panel-title {{subgenres.name}}
       .panel-body
-        %a.btn.btn-info{'ng-repeat' => 'subgenre in subgenres', href: "/genres/{{subgenre}}"}
+        %a.btn.btn-info.btn-genre{'ng-repeat' => 'subgenre in subgenres', href: "/genres/{{subgenre}}"}
           {{subgenre}}
 

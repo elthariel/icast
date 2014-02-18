@@ -91,7 +91,7 @@ class Api::GenresController < ApplicationController
       "beat", "laika", "mixtapes", "independent", "oldschool", "euro", "in",
       "synthpop", "i", "und", "entertainment", "generaliste", "24", "album",
       "40s", "npr", "speech", "ranchera", "british", "eska", "medicine",
-      "france", "(null)", "deutschrock", "free", "seasonal", "south",
+      "france", "deutschrock", "free", "seasonal", "south",
       "tropicalia", "contemporaneo", "deephouse"]
     }
   end

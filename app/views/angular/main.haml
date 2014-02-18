@@ -10,7 +10,9 @@
     .jumbotron
       %h1 Hello iCast !
       %p.lead
-        A modern, open and collaborative stream directory.
+        A modern, open and collaborative stream directory. Enjoy more than
+        %span.text-primary {{stream_count}}
+        streams.
         %small.text-info
           iCast frontend is under heavy development. API is more stable and tested
       %p
@@ -28,4 +30,10 @@
           %p Aenean ultrices ullamcorper risus sit amet condimentum. In adipiscing pellentesque erat, at aliquet mauris molestie sit amet. Phasellus eros leo, tincidunt rhoncus elementum egestas, vestibulum a tellus. Nunc laoreet risus at sapien laoreet, eget tincidunt erat laoreet. Pellentesque feugiat nibh augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc iaculis, lacus nec hendrerit venenatis, nulla felis aliquam justo, in ullamcorper leo erat id orci.
     .row
       .col-md-12
-        %h3 Popular genre here (at some point)
+        .panel.panel-primary.genre
+          .panel-heading
+            %i.fa.fa-folder-o.pull-left
+            %h3.panel-title Random popular genres
+          .panel-body
+            %a.btn.btn-info.btn-genre{'ng-repeat' => 'genre in genres', href: "/genres/{{genre}}"}
+              {{genre}}
