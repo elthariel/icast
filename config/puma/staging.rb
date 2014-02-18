@@ -11,9 +11,9 @@ threads 0, 4
 
 # Daemonize stuff
 daemonize       true
-pidfile         '/home/staging/app/current/tmp/pids/puma.pid'
-bind            'unix:///home/staging/app/current/tmp/sockets/puma.sock'
-state_path      '/home/staging/app/current/tmp/sockets/puma.state'
+pidfile         '/home/staging/app/current/tmp/puma/pid'
+bind            'unix:///home/staging/app/current/tmp/puma/socket'
+state_path      '/home/staging/app/current/tmp/puma/state'
 stdout_redirect '/home/staging/app/current/log/puma.stdout',
                 '/home/staging/app/current/log/puma.stderr', true
 
@@ -137,3 +137,4 @@ stdout_redirect '/home/staging/app/current/log/puma.stdout',
 # activate_control_app 'unix:///var/run/pumactl.sock'
 # activate_control_app 'unix:///var/run/pumactl.sock', { auth_token: '12345' }
 # activate_control_app 'unix:///var/run/pumactl.sock', { no_token: true }
+activate_control_app
