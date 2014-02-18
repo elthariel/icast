@@ -43,6 +43,14 @@ hiphop:
   - urban
   - rnb
 
+mainstream:
+  - 40s
+  - 50s
+  - 60s
+  - 80s
+  - 90s
+  - disco
+
 various:
   - talk
   - misc

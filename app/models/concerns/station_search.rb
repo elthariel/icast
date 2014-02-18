@@ -13,21 +13,21 @@ module StationSearch
       indexes :id,                index: :not_analyzed
       indexes :slug,              index: :not_analyzed
       indexes :name,              analyzer: :simple
-      indexes :slogan,            analyzer: :snowball
+      indexes :slogan
       indexes :country,           index: :not_analyzed
       indexes :language,          index: :not_analyzed
-      indexes :genres,            analyzer: :simple,    as: 'genre_list'
-      indexes :tags,              analyzer: :simple,    as: 'tag_list'
-      indexes :location,          type: :geo_point,     as: 'elastic_location'
-      indexes 'details.state',                          as: 'details.state'
-      indexes 'details.city',                           as: 'details.city'
+      indexes :genres,                                      as: 'genre_list'
+      #indexes :tags,              analyzer: :simple,        as: 'tag_list'
+      indexes :location,          type: :geo_point,         as: 'elastic_location'
+      indexes 'details.state',                              as: 'details.state'
+      indexes 'details.city',                               as: 'details.city'
       # FIXME Check for ngram analyzer and use if it's cool
-      indexes 'details.website',  analyzer: :simple,    as: 'details.website'
-      indexes 'details.twitter',  index: :not_analyzed, as: 'details.twitter'
-      indexes 'details.email',    index: :not_analyzed, as: 'details.email'
-      indexes 'details.phone',    index: :not_analyzed, as: 'details.phone'
-      indexes 'details.lineup',   index: :not_analyzed, as: 'details.lineup'
-      indexes 'details.description',  index: :not_analyzed, as: 'details.description'
+      indexes 'details.website',  index: :not_analyzed,     as: 'details.website'
+      indexes 'details.twitter',  index: :not_analyzed,     as: 'details.twitter'
+      indexes 'details.email',    index: :not_analyzed,     as: 'details.email'
+      indexes 'details.phone',    index: :not_analyzed,     as: 'details.phone'
+      indexes 'details.lineup',                             as: 'details.lineup'
+      indexes 'details.description',                        as: 'details.description'
     end
   end
 
