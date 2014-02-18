@@ -12,9 +12,9 @@ workers 4
 
 # Daemonize stuff
 daemonize       true
-pidfile         '/home/production/app/current/tmp/pids/puma.pid'
-bind            'unix:///home/production/app/current/tmp/sockets/puma.sock'
-state_path      '/home/production/app/current/tmp/sockets/puma.state'
+pidfile         '/home/production/app/current/tmp/puma/pid'
+bind            'unix:///home/production/app/current/tmp/puma/socket'
+state_path      '/home/production/app/current/tmp/puma/state'
 stdout_redirect '/home/production/app/current/log/puma.stdout',
                 '/home/production/app/current/log/puma.stderr', true
 

@@ -17,7 +17,7 @@ set :sudo,          'env'
 set :format,        :pretty
 set :log_level,     :debug
 
-set :shared_children, shared_children + %w{public/uploads public/assets tmp/pids}
+set :shared_children, shared_children + %w{public/uploads public/assets tmp/pids tmp/puma}
 set :keep_releases, 5
 
 namespace :db do
