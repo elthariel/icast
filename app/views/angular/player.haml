@@ -6,15 +6,15 @@
       %a.btn.btn-primary.btn-lg{'ng-show' => 'player.playing', 'ng-click' => 'stop()'}
         %i.fa.fa-stop
       .btn-group-vertical
-        %a.btn.btn-default.btn-sm
+        %a.btn.btn-default.btn-sm.disabled
           %i.fa.fa-refresh
-        %a.btn.btn-default.btn-sm
+        %a.btn.btn-default.btn-sm.disabled
           %i.fa.fa-heart
       %a{href: '#'}
         %img.logo{src: '{{player.radio.logo.medium}}'}
 
       #volume-controls
-        %a
+        %a.disabled
           %i.fa.fa-volume-up
 
 

@@ -1,11 +1,14 @@
 .well.text-center
   %h1 Browse by genre
-  %p.lead Find the right station
+  %p.lead and find the right station for your mood
 .row
-  .col-md-12
-    %ul#allgenres
-      %li{'ng-repeat' => '(genre, subgenres) in genres'}
-        %a{href: "/genres/{{genre}}"} {{genre}}:
-        %ul
-          %li{'ng-repeat' => 'subgenre in subgenres'}
-            %a{href: "/genres/{{subgenre}}"} {{subgenre}}
+  .col-md-4{'ng-repeat' => 'col in columns'}
+    .panel.panel-primary.genre{'ng-repeat' => '(key, subgenres) in col'}
+      .panel-heading
+        %a{href: "/genres/{{subgenres.name}}"}
+          %i.fa.fa-folder-o.pull-left
+          %h3.panel-title {{subgenres.name}}
+      .panel-body
+        %a.btn.btn-info{'ng-repeat' => 'subgenre in subgenres', href: "/genres/{{subgenre}}"}
+          {{subgenre}}
+

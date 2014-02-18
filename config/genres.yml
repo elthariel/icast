@@ -1,0 +1,62 @@
+electronic:
+  - house
+  - dance
+  - techno
+  - minimal
+  - trance
+  - psychedelic
+  - easy
+  - electronica
+  - hardcore
+  - drum
+  - edm
+
+rock:
+  - metal
+  - pop
+  - oldies
+  - punk
+  - blues
+  - soul
+  - industrial
+  - garage
+  - rockabilly
+
+world:
+  - salsa
+  - latin
+  - country
+  - asian
+  - russian
+  - polska
+  - arabic
+  - african
+  - jpop
+  - celtic
+  - zouk
+  - brasilian
+  - mexicano
+
+hiphop:
+  - rap
+  - trap
+  - urban
+  - rnb
+
+various:
+  - talk
+  - misc
+  - news
+
+religious:
+  - gospel
+  - christian
+  - islamic
+
+classic:
+  - opera
+
+alternative:
+  - reggae
+  - indie
+  - underground
