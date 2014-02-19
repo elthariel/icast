@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   has_many :contributions
 
+  acts_as_voter
+
   def display_name
     email
   end

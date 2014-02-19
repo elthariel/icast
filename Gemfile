@@ -131,3 +131,6 @@ gem 'hashie'
 
 # Handle CORS policy for the API
 gem 'rack-cors', :require => 'rack/cors'
+
+# Handle popularity and stuff
+gem 'acts_as_votable', '~> 0.8.0'

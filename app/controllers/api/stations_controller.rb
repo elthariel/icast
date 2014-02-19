@@ -81,14 +81,15 @@ well as deleting it (don't leave us please, we like you !)
   end
 
   respond_to :json
-  before_action :authenticate_user!, only: [:create, :update, :destroy, :suggest]
-  before_action :load_station, only: [:show, :update, :destroy, :suggest]
+  before_action :authenticate_user!, only: [:create, :update, :destroy, :suggest, :like]
+  before_action :load_station, only: [:show, :update, :destroy, :suggest, :like]
 
   api :GET, '/stations', 'List the stations'
   param :page, Fixnum, desc: "The number of the page to return"
   param :page_size, Fixnum, desc: "The size of the page to return, by default page_size is 20. Must be between 1 and 100"
   def index
     @stations = Station.all.includes(:streams)
+      .by_popularity
       .page(params[:page])
       .per(params[:page_size] || 20)
 
@@ -213,6 +214,25 @@ well as deleting it (don't leave us please, we like you !)
 
     @action.destroy
     render status: :ok, nothing: true
+  end
+
+
+  api :POST, '/stations/:id/like(.format)', "Upvotes/Favorites this stations"
+  param :id, [Fixnum, String], required: true,
+    desc: 'A unique identifier for the station, either numerical or the slug'
+  desc <<-DESC
+  Cast an upvote on this station on behalf of the currently
+  logged user'. It will be used in the future to handle favorites stations as
+  well as to sort station by popularity.
+
+  This is an authenticated call.
+  DESC
+  def like
+    if !current_user.voted_for? @station and current_user.likes @station
+      render nothing: true
+    else
+      render status: :forbidden, json: {errors: ['Already voted or unexpected error']}
+    end
   end
 
 

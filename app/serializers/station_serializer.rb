@@ -1,6 +1,6 @@
 class StationSerializer < ActiveModel::Serializer
   attributes :id, :slug, :name, :slogan, :country, :language, :current,
-    :genre_list, :logo
+    :genre_list, :logo, :likes
 
   def current
     object.metadata.all
@@ -16,6 +16,10 @@ class StationSerializer < ActiveModel::Serializer
     else
       nil
     end
+  end
+
+  def likes
+    object.cached_votes_up
   end
 
   has_many :streams

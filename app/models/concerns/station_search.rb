@@ -10,13 +10,13 @@ module StationSearch
     include Tire::Model::Callbacks
 
     mapping do
-      indexes :id,                index: :not_analyzed
+      indexes :id,                type: :integer
       indexes :slug,              index: :not_analyzed
       indexes :name,              analyzer: :simple
       indexes :slogan
       indexes :country,           index: :not_analyzed
       indexes :language,          index: :not_analyzed
-      indexes :genres,                                      as: 'genre_list'
+      indexes :genres,                                      as: 'genre_list', boost: 10.0
       #indexes :tags,              analyzer: :simple,        as: 'tag_list'
       indexes :location,          type: :geo_point,         as: 'elastic_location'
       indexes 'details.state',                              as: 'details.state'
@@ -28,6 +28,8 @@ module StationSearch
       indexes 'details.phone',    index: :not_analyzed,     as: 'details.phone'
       indexes 'details.lineup',                             as: 'details.lineup'
       indexes 'details.description',                        as: 'details.description'
+
+      indexes :likes,             type: :integer,           as: 'cached_votes_up'
     end
   end
 
@@ -51,6 +53,11 @@ module StationSearch
 
         if opts[:genres].present?
           filter :terms, genres: opts[:genres], execution: 'and'
+        end
+
+        sort do
+          by :likes, 'desc'
+          by :_score, 'desc'
         end
       end
     end

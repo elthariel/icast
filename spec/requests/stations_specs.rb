@@ -49,6 +49,25 @@ describe 'Station' do
     end
   end
 
+  describe "Upvote" do
+    let(:station) { FactoryGirl.create :station }
+    it "increases the number of votes" do
+      expect { post like_api_station_path(station.slug) }
+        .to change { station.likes.count }.by(1)
+    end
+    it "increases the -cached- number of votes" do
+      expect { post like_api_station_path(station.slug) }
+        .to change { station.reload.cached_votes_up }.by(1)
+    end
+    it "allow a user to vote only once" do
+      post like_api_station_path(station.id)
+      expect(response.status).to be(200)
+
+      post like_api_station_path(station.id)
+      expect(response.status).to be(403)
+    end
+  end
+
   describe "Querying" do
     let(:stations) { (0...5).to_a.map { FactoryGirl.create :station } }
 

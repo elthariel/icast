@@ -59,6 +59,7 @@ GEM
       tzinfo (~> 0.3.37)
     acts-as-taggable-on (3.0.0)
       rails (>= 3, < 5)
+    acts_as_votable (0.8.0)
     ansi (1.4.3)
     apipie-rails (0.0.21)
       rails (>= 3.0.10)
@@ -340,6 +341,7 @@ DEPENDENCIES
   activeadmin!
   activerecord-jdbcpostgresql-adapter
   acts-as-taggable-on
+  acts_as_votable (~> 0.8.0)
   apipie-rails
   authority
   better_errors
