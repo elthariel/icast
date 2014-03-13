@@ -34,8 +34,8 @@
         {{radio.details.lineup}}
 
     %p
-      %strong formats:
-      %span.label.label-default{"ng-repeat" => 'stream in radio.streams'} {{stream.mime}}
+      %strong Available streams:
+      %stream{"ng-repeat" => 'stream in radio.streams', station: "radio", stream: "stream"}
 
     .contribute.text-center{'ng-show' => 'currentUser'}
       %a.btn.btn-lg.btn-primary{href: '/contribute/{{radio.slug}}'} Edit this station !

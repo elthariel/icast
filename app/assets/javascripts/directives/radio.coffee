@@ -14,7 +14,7 @@ angular.module('icastApp')
       $scope.updateRadio = () ->
         $scope.radio = Restangular.one('stations', $scope.id).get().$object
       $scope.play = () ->
-        Player.play($scope.radio)
+        Player.play($scope.radio, $scope.radio.stream[0])
 
       $rootScope.$watch 'currentUser', () ->
         $scope.currentUser = $rootScope.currentUser
