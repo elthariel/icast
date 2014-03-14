@@ -7,7 +7,9 @@ directory '/home/staging/app/current'
 environment 'staging'
 
 # Threading configuration. Since this is staging, we don't need a high value
-threads 0, 4
+# FIXME Lta. I've been increasing thoses values to perform benchmarks of caching
+workers 8
+threads 0,4
 
 # Daemonize stuff
 daemonize       true
