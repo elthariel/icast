@@ -2,7 +2,7 @@ class CachingScope
   DEFAULT_OPTIONS = {
     collection: true,
     item:       true
-  }
+  }.freeze
 
   attr_reader :caching_scope
 

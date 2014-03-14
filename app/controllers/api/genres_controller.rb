@@ -27,9 +27,12 @@ class Api::GenresController < ApplicationController
   DESC
   see "stations_search#genre"
   def index
-    genres = YAML::load_file Rails.root.join('config', 'genres.yml')
-    puts genres.inspect
-    render json: { genres: genres }
+    cached_json = Rails.cache.fetch 'genres#index-tojson' do
+      genres = YAML::load_file Rails.root.join('config', 'genres.yml')
+      { genres: genres }.to_json
+    end
+
+    render json: cached_json
   end
 
   api :GET, '/genres/popular', 'Get a list of popular categories and subcategories for use station search by genre'

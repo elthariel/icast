@@ -38,7 +38,8 @@ module ICast
       end
     end
 
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache',
-      { expires_in: 1.minutes }
+    config.cache_store = :redis_store,
+      ENV['REDIS_CACHE_URL'] || ENV['REDIS_CACHE_URL'] + "/cache",
+      { expires_in: 1.day }
   end
 end

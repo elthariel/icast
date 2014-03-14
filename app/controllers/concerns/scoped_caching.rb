@@ -2,6 +2,7 @@ module ScopedCaching
   extend ActiveSupport::Concern
 
   included do
+    Rails.logger.info "#{self} activated ScopedCaching at the Controller level"
     self._caching_scope = {}
   end
 
@@ -15,14 +16,15 @@ module ScopedCaching
       end
       scope
     end.merge!(@_request_caching_scope || CachingScope.new)
-    #puts "serialization_scope: #{res.inspect}"
+    # puts "!!!serialization_scope: #{res.inspect}"
     res
   end
 
-  def caching_scope(hash)
+  def caching_scope(key, value, opts = {})
+    opts = CachingScope::DEFAULT_OPTIONS.merge opts
     @_request_caching_scope ||= CachingScope.new
 
-    hash.each { |k, v| @_request_caching_scope.add(k, v) }
+    @_request_caching_scope.add key, value, opts
   end
 
   private
