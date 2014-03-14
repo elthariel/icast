@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def display_name
     email
   end
+
+  def cache_key
+    ["uid:#{self.id}", "t#{self.updated_at.to_time.to_i}"]
+  end
 end

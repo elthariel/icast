@@ -1,6 +1,6 @@
-class KaminariSerializer < ActiveModel::ArraySerializer
+class KaminariSerializer < ApplicationArraySerializer
   def initialize(object, options = {})
-    super
+    super object, options
 
     # Kaminari pagination
     if object.respond_to? :current_page

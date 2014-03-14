@@ -32,7 +32,7 @@ class Api::StationsSearchController < Api::BaseController
 
   EOS
   def local
-    @stations = Station.where(country: @geoip['country_code2'].downcase)
+    @stations = Station.where(country: geoip['country_code2'].downcase)
       .by_popularity
       .page(params[:page] || 0)
       .per(params[:page_size] || 20)

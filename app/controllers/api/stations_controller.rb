@@ -80,6 +80,13 @@ well as deleting it (don't leave us please, we like you !)
     EOS
   end
 
+  include ScopedCaching
+  include Paginatable
+  caching_scope :user, [:current_user, :email]
+
+  caching_scope :page, :page,       item: false
+  caching_scope :per,  :page_size,  item: false
+
   respond_to :json
   before_action :authenticate_user!, only: [:create, :update, :destroy, :suggest, :like]
   before_action :load_station, only: [:show, :update, :destroy, :suggest, :like]
@@ -90,8 +97,8 @@ well as deleting it (don't leave us please, we like you !)
   def index
     @stations = Station.all.includes(:streams)
       .by_popularity
-      .page(params[:page])
-      .per(params[:page_size] || 20)
+      .page(page)
+      .per(page_size)
 
     render json: @stations, serializer: KaminariSerializer
   end

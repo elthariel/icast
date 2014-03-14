@@ -1,6 +1,7 @@
-class StationSerializer < ActiveModel::Serializer
+class StationSerializer < ApplicationSerializer
   attributes :id, :slug, :name, :slogan, :country, :language, :current,
     :genre_list, :logo, :likes
+  has_many :streams
 
   def current
     object.metadata.all
@@ -21,6 +22,4 @@ class StationSerializer < ActiveModel::Serializer
   def likes
     object.cached_votes_up
   end
-
-  has_many :streams
 end
