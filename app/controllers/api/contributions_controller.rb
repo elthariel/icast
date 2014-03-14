@@ -16,13 +16,18 @@ Theses calls [requires authentication](/api/doc/1.0/sessions)
     error code: 401, desc: 'Not Authenticated'
   end
 
+  include ScopedCaching
+  caching_scope :user, [:current_user, :email]
+
   before_action :authenticate_user!
   before_action :set_contribution, only: [:show, :update, :destroy]
+
+
 
   api :GET, '/contributions(.format)', 'Get a list of you own contributions'
   def index
     @contributions = current_user.contributions
-    render json: @contributions
+    render json: @contributions, serializer: ApplicationArraySerializer
   end
 
   api :POST, '/contributions(.format)', 'Contribute new content (thank you!)'

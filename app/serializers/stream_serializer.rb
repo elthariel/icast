@@ -1,4 +1,4 @@
-class StreamSerializer < ApplicationSerializer
+class StreamSerializer < CachedSerializer
   attributes :id, :uri, :video, :mime, :bitrate, :samplerate, :channels,
     :framerate, :width, :height
 

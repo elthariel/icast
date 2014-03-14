@@ -80,10 +80,9 @@ well as deleting it (don't leave us please, we like you !)
     EOS
   end
 
-  include ScopedCaching
   include Paginatable
+  include ScopedCaching
   caching_scope :user, [:current_user, :email]
-
   caching_scope :page, :page,       item: false
   caching_scope :per,  :page_size,  item: false
 

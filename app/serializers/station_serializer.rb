@@ -1,4 +1,4 @@
-class StationSerializer < ApplicationSerializer
+class StationSerializer < CachedSerializer
   attributes :id, :slug, :name, :slogan, :country, :language, :current,
     :genre_list, :logo, :likes
   has_many :streams

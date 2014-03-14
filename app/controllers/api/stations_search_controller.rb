@@ -17,6 +17,11 @@ class Api::StationsSearchController < Api::BaseController
   include GeocodeRequest
   before_action :geocode_request!, only: [:local]
 
+  include Paginatable
+  include ScopedCaching
+  caching_scope :page, :page
+  caching_scope :per,  :page_size
+
   respond_to :json
 
 
@@ -36,6 +41,8 @@ class Api::StationsSearchController < Api::BaseController
       .by_popularity
       .page(params[:page] || 0)
       .per(params[:page_size] || 20)
+
+    caching_scope :country, geoip['country_code2'], item: false
     render_stations
   end
 
@@ -73,6 +80,8 @@ class Api::StationsSearchController < Api::BaseController
     else
       @stations = Station.where(country: params[:country_code].downcase)
         .page(params[:page] || 0).by_popularity
+
+      caching_scope :country, params[:country_code2], item: false
       render_stations
     end
   end
@@ -113,6 +122,7 @@ class Api::StationsSearchController < Api::BaseController
         .page(params[:page] || 0)
         .per(params[:page_size] || 20)
 
+      caching_scope :lang, params[:language], item: false
       render_stations
     end
   end
@@ -137,11 +147,12 @@ class Api::StationsSearchController < Api::BaseController
   def genre
     render status: :not_found if params[:genres].empty?
 
+    caching_scope :genre, params[:genres], item: false
+
     params[:genres] = params[:genres].downcase.split(',')
     @stations = Station.search(params[:q], genres: params[:genres],
       page: params[:page], page_size: params[:page]
     )
-
     render_stations
   end
 
@@ -166,6 +177,7 @@ class Api::StationsSearchController < Api::BaseController
       page: params[:page], page_size: params[:page]
     )
 
+    caching_scope :searchq, params[:q]
     render_stations
   end
 
