@@ -26,8 +26,8 @@ angular.module('icastApp')
         @scope.playingText  =  'Click on a stream logo to start playing'
         @scope.playing      =      false
 
-      selectPlayingUri: (radio) ->
-        uri = radio.streams[0].uri
+      selectPlayingUri: (stream) ->
+        uri = stream.uri
 
         # This is a hack to disable Shoutcast status page generation
         if uri.match /:\d+$/
@@ -35,17 +35,23 @@ angular.module('icastApp')
 
         uri
 
-      play: (radio = null) ->
+      play: (radio = null, stream = null) ->
         if radio
           @scope.radio = radio
-        return unless @scope.radio.streams
+          if stream
+            @scope.stream = stream
+          else if @scope.radio.streams
+            @scope.stream = radio.streams[0]
+          else
+            return
+
         if @sound
           @stop()
 
 
         @scope.playingText = "Buffering..."
         @sound = soundManager.createSound
-          url:      @selectPlayingUri(@scope.radio)
+          url:      @selectPlayingUri(@scope.stream)
           volume:   50
           autoplay: true
           onid3: () ->

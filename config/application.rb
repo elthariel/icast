@@ -26,7 +26,8 @@ module ICast
 
     config.autoload_paths += [
       "#{config.root}/app/classes",
-      "#{config.root}/app/services"
+      "#{config.root}/app/services",
+      "#{config.root}/app/serializers/concerns"
     ]
 
     config.middleware.use Rack::Cors do
@@ -37,5 +38,7 @@ module ICast
       end
     end
 
+    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache',
+      { expires_in: 1.minutes }
   end
 end

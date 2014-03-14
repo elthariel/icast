@@ -32,10 +32,10 @@ class Api::StationsSearchController < Api::BaseController
 
   EOS
   def local
-    @stations = Station.where(country: @geoip['country_code2'].downcase)
+    @stations = Station.where(country: geoip['country_code2'].downcase)
+      .by_popularity
       .page(params[:page] || 0)
       .per(params[:page_size] || 20)
-      .order('updated_at DESC')
     render_stations
   end
 
@@ -72,7 +72,7 @@ class Api::StationsSearchController < Api::BaseController
       render status: :not_found, nothing: true
     else
       @stations = Station.where(country: params[:country_code].downcase)
-        .page(params[:page] || 0)
+        .page(params[:page] || 0).by_popularity
       render_stations
     end
   end
@@ -109,7 +109,10 @@ class Api::StationsSearchController < Api::BaseController
       render status: :not_found, nothing: true
     else
       @stations = Station.where(language: params[:language].downcase)
+        .by_popularity
         .page(params[:page] || 0)
+        .per(params[:page_size] || 20)
+
       render_stations
     end
   end

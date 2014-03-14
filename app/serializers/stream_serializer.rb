@@ -1,4 +1,4 @@
-class StreamSerializer < ActiveModel::Serializer
+class StreamSerializer < ApplicationSerializer
   attributes :id, :uri, :video, :mime, :bitrate, :samplerate, :channels,
     :framerate, :width, :height
 

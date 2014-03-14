@@ -9,6 +9,9 @@ class Station < ActiveRecord::Base
   METAS = [ :artist, :title, :genre ]
   TAGS  = [ :genre, :tags ]
 
+  ###########################
+  # Associations            #
+  ###########################
   # Station's owner
   belongs_to :user
 
@@ -23,14 +26,32 @@ class Station < ActiveRecord::Base
 
   has_many :contributions, as: :contributable
 
-  # Validations
+
+
+  ###########################
+  # Scopes                  #
+  ###########################
+  scope :by_popularity,   ->{ order('cached_votes_up DESC') }
+
+
+  ###########################
+  # Validations             #
+  ###########################
   validates :slug,     length: { minimum: 2 }, presence: true
   validates :name,     length: { minimum: 2 }, presence: true
   validates :country,  length: { maximum: 2 }
   validates :language, length: { maximum: 2 }
 
+
+
+  ###########################
+  # Extensions/behavior     #
+  ###########################
   # Station Logo
   mount_uploader :logo, StationLogoUploader
+
+  # Votable
+  acts_as_votable
 
   # MetaData/Tags
   METAS.each { |meta| delegate meta, to: :metadata, prefix: :current }

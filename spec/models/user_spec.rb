@@ -24,5 +24,12 @@ describe 'User' do
         expect(subject.default?).to be_false
       end
     end
+
+    describe "#display_name" do
+      subject { FactoryGirl.create :user }
+      it "returns the email" do
+        expect(subject.display_name).to eq(subject.email)
+      end
+    end
   end
 end

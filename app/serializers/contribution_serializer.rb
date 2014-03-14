@@ -1,3 +1,3 @@
-class ContributionSerializer < ActiveModel::Serializer
+class ContributionSerializer < ApplicationSerializer
   attributes :id, :contributable_type, :contributable_id, :data, :applied_at
 end

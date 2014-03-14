@@ -15,6 +15,7 @@ ICast::Application.routes.draw do
         resources :stations, except: [:new, :edit] do
           member do
             post :suggest
+            post :like
           end
           collection do
             get :local,                   to: 'stations_search#local',    as: :local

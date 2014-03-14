@@ -87,7 +87,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 # FIXME Implement me later gem 'country-select'
 
 # Model Serialization
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.8.1'
 
 # Handle tagging of Model
 gem 'acts-as-taggable-on'
@@ -96,7 +96,7 @@ gem 'acts-as-taggable-on'
 gem 'figaro'
 
 # Redis goodness to handle fast changing data
-gem 'redis'
+gem 'redis-rails'
 gem 'redis-objects'
 
 # Image upload
@@ -131,3 +131,6 @@ gem 'hashie'
 
 # Handle CORS policy for the API
 gem 'rack-cors', :require => 'rack/cors'
+
+# Handle popularity and stuff
+gem 'acts_as_votable', '~> 0.8.0'
